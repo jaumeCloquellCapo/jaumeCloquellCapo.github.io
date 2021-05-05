@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/categories/about-awake", {data:[{}],fetch:[],mutations:[["set",{content:"All about the Awake Nuxt Template\n",isEmpty:false,excerpt:"",name:"About Awake",image:"\u002Flogo.svg",pageType:"category",slug:"about-awake"}]]});

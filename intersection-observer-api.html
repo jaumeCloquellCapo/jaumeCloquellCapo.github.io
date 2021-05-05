@@ -1,0 +1,132 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Intersection Observer API in React</title><meta name="description" content="Modern web applications use a lot of animations and media ranging from images, gif, videos to SVG’s to make user experience elegant and engaging. If not handled properly, it can hamper your website’s performance, and these things might not work in your favour. To overcome&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/intersection-observer-api.html"><link rel="amphtml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/amp/intersection-observer-api.html"><link rel="alternate" type="application/atom+xml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.xml"><link rel="alternate" type="application/json" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.json"><meta property="og:title" content="Intersection Observer API in React"><meta property="og:image" content="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/images.jpeg"><meta property="og:site_name" content="jaumecloquellcapo"><meta property="og:description" content="Modern web applications use a lot of animations and media ranging from images, gif, videos to SVG’s to make user experience elegant and engaging. If not handled properly, it can hamper your website’s performance, and these things might not work in your favour. To overcome&hellip;"><meta property="og:url" content="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/intersection-observer-api.html"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/favicon.ico" type="image/x-icon"><style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--logo-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--menu-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}</style><link rel="stylesheet" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/css/style.css?v=070d93baee55611c69660b27e7d8e9db"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/intersection-observer-api.html"},"headline":"Intersection Observer API in React","datePublished":"2020-09-03T18:11","dateModified":"2020-09-10T12:47","image":{"@type":"ImageObject","url":"https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/images.jpeg","height":798,"width":800},"description":"Modern web applications use a lot of animations and media ranging from images, gif, videos to SVG’s to make user experience elegant and engaging. If not handled properly, it can hamper your website’s performance, and these things might not work in your favour. To overcome&hellip;","author":{"@type":"Person","name":"jaume cloquell capo"},"publisher":{"@type":"Organization","name":"jaume cloquell capo"}}</script></head><body><div class="site-container"><header class="top" id="js-header"><a class="logo" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/">jaumecloquellcapo</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/" title="https://jaumecloquellcapo.github.io/jaumeCloquellCapo.github.io/" target="_self">Home</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/" target="_self">JS</a></li><li class="has-submenu"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/machine-learning/" target="_self" aria-haspopup="true">AI</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/abm/" target="_self">ABM</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/nlp/" target="_self">NLP</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/geneticalgorithms/" target="_self">Genetic Algorithms</a></li></ul></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/golang/" target="_self">Golang</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/search.html" class="search__form"><input class="search__input js-search-input" type="search" name="q" placeholder="search..." aria-label="search..." autofocus="autofocus"></form><button class="search__close js-search-close" aria-label="Close">Close</button></div></div><button class="search__btn js-search-btn" aria-label="Search"><svg role="presentation" focusable="false"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#search"/></svg></button></div></header><main><article class="post"><div class="hero"><figure class="hero__image hero__image--overlay"><img src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/images.jpeg" srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/responsive/images-xs.jpeg 300w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/responsive/images-sm.jpeg 480w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/responsive/images-md.jpeg 768w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/responsive/images-lg.jpeg 1024w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/responsive/images-xl.jpeg 1360w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/responsive/images-2xl.jpeg 1600w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" height="798" width="800" alt=""></figure><header class="hero__content"><div class="wrapper"><div class="post__meta"><time datetime="2020-09-03T18:11">September 3, 2020</time></div><h1>Intersection Observer API in React</h1><div class="post__meta post__meta--author"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="feed__author invert">jaume cloquell capo</a></div></div></header></div><div class="wrapper post__entry"><article class="structure__article structure__long-form"><p>Modern web applications use a lot of animations and media ranging from images, gif, videos to SVG’s to make user experience elegant and engaging. If not handled properly, it can hamper your website’s performance, and these things might not work in your favour. To overcome this issue of over-fetching resources, we need to handle the media on our website more sincerely and display them only when necessary, the jargon for which is lazy loading.</p><p>Native observers empower your JavaScript to subscribe to events like the alteration of the DOM, an elements position in relation to the viewport and even the resizing of individual elements. Each observer follows a similar pattern to construct and they offload complicated and sometimes tightly coupled functionality to the browser.</p><p>In this post, I’ll talk about the intersection and observation process and how they relate to the threshold and browser viewport.. To explain our intersection observer, we will implement a <em>lazy loading</em> using Intersection observer in react.</p><h2>Get the images by url</h2><p>At this point we're going to do a little cheating, since if we were using a conventional REST API, we should get the list of photos and then get the resource associated with the image sprites of each photo. All the sprites are under the same URL:</p><pre class="prettyprint prettyprinted"><code>export default async function fetchPhotos () {</code><br><code>    return await Array.apply(null, { length: 150 })</code><br><code>        .map((item, index) =&gt; {</code><br><code>            return {</code><br><code>                id: index + 1,</code><br><code>                sprite: `https://picsum.photos/200/300?random=${index}`</code><br><code>            }</code><br><code>        })</code><br><code>}</code></pre><p> </p><h2>Implementing the Intersection Observer in a gallery of photos</h2><p>The goal I want to achieve is to avoid loading images that appear below the viewport but, at the same time, to achieve a fluid user experience so that you do not notice that you are doing this downloading of images in delay.The intersection observer allows you to watch when an element intersects with the viewport.<br><br>An intersection observer follows the following pattern to set up: we need to define our observer and a callback function to fire when our conditions are met:</p><pre class="prettyprint prettyprinted"><code class="prettyprint"><span class="kwd">const</span><span class="pln"> observer </span><span class="pun">=</span> <span class="kwd">new</span> <span class="typ">IntersectionObserver</span><span class="pun">(</span><span class="pln">intersectionCallback</span><span class="pun">);</span></code></pre><p>The fields of options object are as follows:</p><ul><li><strong>root: </strong>The element that is used as the viewport for checking the visibility of the target. If the value is provided as null or not specified, then it will take the browser’s viewport.</li><li><strong>rootMargin:</strong> This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. It accepts values in a similar fashion as CSS e.g. "5px 10px 5px 10px".</li><li><strong>threshold:</strong> Either a single number or an array of numbers which indicate at what percentage of the target's visibility, the observer's callback should be executed. Its value ranges from 0 to 1.0, where 0 symbolises that one pixel is visible and 1.0 means every pixel is visible in the viewport.</li></ul><p>Now we will select all target elements and observe them.</p><p><code class="prettyprint prettyprinted"><span class="pln">observer</span><span class="pun">.</span><span class="pln">observe</span><span class="pun">(</span><span class="pln">document</span><span class="pun">.</span><span class="pln">querySelector</span><span class="pun">(‘.</span><span class="pln">yourElement</span><span class="pun">’));</span></code></p><p>Finally our callback, which we called <code><span class="token">lazyLoadImage</span></code> above. </p><pre><code><span class="token module">export</span> <span class="token module">default</span> <span class="token">function</span> <span class="token">lazyLoadImage</span><span class="token">(</span><span class="token parameter">entries</span><span class="token parameter token">,</span><span class="token parameter"> observer</span><span class="token">)</span> <span class="token">{</span>
+  entries<span class="token">.</span><span class="token method property-access">forEach</span><span class="token">(</span><span class="token">(</span><span class="token parameter">entry</span><span class="token">)</span> <span class="token arrow">=&gt;</span> <span class="token">{</span>
+    <span class="token">if</span> <span class="token">(</span>entry<span class="token">.</span><span class="token property-access">isIntersecting</span><span class="token">)</span> <span class="token">{</span>
+      observer<span class="token">.</span><span class="token method property-access">unobserve</span><span class="token">(</span>entry<span class="token">.</span><span class="token property-access">target</span><span class="token">)</span><span class="token">;</span>
+      entry<span class="token">.</span><span class="token property-access">target</span><span class="token">.</span><span class="token property-access">src</span> <span class="token">=</span> entry<span class="token">.</span><span class="token property-access">target</span><span class="token">.</span><span class="token property-access">dataset</span><span class="token">.</span><span class="token property-access">src</span><span class="token">;</span>
+    <span class="token">}</span>
+  <span class="token">}</span><span class="token">)</span><span class="token">;</span>
+<span class="token">}</span></code></pre><p>In this callback, we say “Hey - intersectionObserver, every time one of our image containers hits the viewport (<code class="prettyprint prettyprinted"><span class="pun"><code><span class="token property-access">isIntersecting</span></code></span> </code>), load the image (<code>entry<span class="token">.</span><span class="token property-access">target</span><span class="token">.</span><span class="token property-access">src</span> <span class="token">=</span> entry<span class="token">.</span><span class="token property-access">target</span><span class="token">.</span><span class="token property-access">dataset</span><span class="token">.</span><span class="token property-access">src</span><span class="token">;</span></code><code class="prettyprint prettyprinted"></code>)”. And that’s it - no more fragile viewport calculations. </p><p>While lazy loading images is an immediate choice, it can be useful in all sorts of applications like flyouts and triggered animations.</p><figure class="post__image"><img loading="lazy" src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/19/deepin-screen-recorder_Navigator_20200903181023.gif" alt="" width="1920" height="972"></figure><p><a href="https://github.com/jaumeCloquellCapo/react-intersection-observer" target="_blank" rel="noopener noreferrer">Github</a></p></article></div><footer class="wrapper post__footer"><p class="post__last-updated">This article was updated on September 10, 2020</p><ul class="post__tag"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/">JavaScript</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/reactjs/">Reactjs</a></li></ul><div class="post__share"><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2FjaumeCloquellCapo.github.io%2FjaumeCloquellCapo.github.io%2Fintersection-observer-api.html&amp;title=Intersection%20Observer%20API%20in%20React" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span></a></div><div class="post__bio bio"><div class="bio__info"><h3 class="bio__name"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="invert" rel="author">jaume cloquell capo</a></h3></div></div></footer></article><nav class="post__nav"><div class="post__nav-inner"><div class="post__nav-prev"><svg width="1.041em" height="0.416em" aria-hidden="true"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-prev"/></svg> <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/sharpe-ratio-risk.html" class="invert post__nav-link" rel="prev"><span>Previous</span> Portfolio Optimization Based on Sharpe Ratio and Genetic Algorithm</a></div><div class="post__nav-next"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/prevent-re-renders-on-react.html" class="invert post__nav-link" rel="next"><span>Next</span> Prevent re-renders on React </a><svg width="1.041em" height="0.416em" aria-hidden="true"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-next"/></svg></div></div></nav><div class="post__related related"><div class="wrapper"><h2 class="h5 related__title">You should also read:</h2><article class="related__item"><div class="feed__meta"><time datetime="2020-09-09T16:09" class="feed__date">September 9, 2020</time></div><h3 class="h1"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/prevent-re-renders-on-react.html" class="invert">Prevent re-renders on React</a></h3></article></div></div><div class="post__comments"><div class="wrapper"><h2 class="h5">Comments</h2><div id="disqus_thread"></div><script>var disqus_config = function () {
+                       this.page.url = 'https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/intersection-observer-api.html';
+               		this.page.identifier = '19';
+                   };
+               
+                   var disqus_loaded = false;
+               
+                   function publiiLoadDisqus() {
+                       if(disqus_loaded) {
+                           return false;
+                       }
+               
+                       var top = document.getElementById('disqus_thread').offsetTop;
+               
+                       if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
+                           disqus_loaded = true;
+               
+                           (function () {
+                               var d = document, s = d.createElement('script');
+                               s.src = 'https://'+'https-jaumecloquellcapo-github-io'.trim()+'.disqus.com/embed.js';
+                               s.setAttribute('data-timestamp', +new Date());
+                               (d.head || d.body).appendChild(s);
+                           })();
+                       }
+                   }
+               
+                   publiiLoadDisqus();
+               
+                   window.onscroll = function() {
+                       publiiLoadDisqus();
+                   };</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noreferrer">comments powered by Disqus.</a></noscript></div></div></main><footer class="footer"><div class="footer__social"><a href="https://www.linkedin.com/in/jaume-cloquell-119765b7" aria-label="LinkedIn"><svg><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/></svg></a></div><div class="footer__copyright"><p>jaume cloquell capo</p></div><button class="footer__bttop js-footer__bttop" aria-label="Back to top"><svg><title>Back to top</title><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'overlay',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.top',
+   };</script><script defer="defer" src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/js/scripts.min.js?v=f4c4d35432d0e17d212f2fae4e0f8247"></script><script>var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><div class="cookie-popup js-cookie-popup cookie-popup--uses-badge"><h2>This website uses cookies</h2><p>Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality. <a href="#not-specified">More details...</a></p><form><input id="gdpr-necessary" name="gdpr-necessary" checked="checked" disabled="disabled" type="checkbox"> <label for="gdpr-necessary">Required</label> <input id="gdpr-functions" name="gdpr-functions" type="checkbox"> <label for="gdpr-functions">Functionality</label> <input id="gdpr-analytics" name="gdpr-analytics" type="checkbox"> <label for="gdpr-analytics">Analytical</label> <input id="gdpr-marketing" name="gdpr-marketing" type="checkbox"> <label for="gdpr-marketing">Marketing</label><p class="cookie-popup__save-wrapper"><button type="submit" class="cookie-popup__save">Save</button></p></form><span class="cookie-popup-label">Cookie Policy</span></div><script>(function() {
+                function addScript (src, inline) {
+                    var newScript = document.createElement('script');
+
+                    if (src) {
+                        newScript.setAttribute('src', src);
+                    }
+
+                    if (inline) {
+                        newScript.text = inline;
+                    }
+
+                    document.body.appendChild(newScript);
+                }
+
+                var popup = document.querySelector('.js-cookie-popup');
+                var checkboxes = popup.querySelectorAll('input[type="checkbox"]');
+                var save = popup.querySelector('button');
+                var currentConfig = localStorage.getItem('publii-gdpr-allowed-cookies');
+                var blockedScripts = document.querySelectorAll('script[type^="gdpr-blocker/"]');
+                
+
+                popup.addEventListener('click', function() {
+                    if (!popup.classList.contains('cookie-popup--is-sticky')) {
+                        popup.classList.add('cookie-popup--is-sticky');
+                    }
+                });
+
+                save.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    popup.classList.remove('cookie-popup--is-sticky');
+                    var allowedGroups = [];
+
+                    for (var i = 0; i < checkboxes.length; i++) {
+                        if (checkboxes[i].checked) {
+                            var groupName = checkboxes[i].getAttribute('name').replace('gdpr-', '');
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + groupName + '"]');
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+
+                            allowedGroups.push(groupName);
+                        }
+                    }
+
+                    localStorage.setItem('publii-gdpr-allowed-cookies', allowedGroups.join(','));
+                    popup.classList.remove('cookie-popup--is-sticky');
+
+                    setTimeout(function () {
+                        if (currentConfig !== null) {
+                            window.location.reload();
+                        }
+                    }, 250);
+                });
+
+                if (currentConfig === null) {
+                    popup.classList.add('cookie-popup--is-sticky');
+                } else {
+                    if (currentConfig !== '') {
+                        var allowedGroups = currentConfig.split(',');
+
+                        for (var i = 0; i < allowedGroups.length; i++) {
+                            var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroups[i] + '"]');
+                            var checkbox = popup.querySelector('input[type="checkbox"][name="gdpr-' + allowedGroups[i] + '"]');
+
+                            if (checkbox) {
+                                checkbox.checked = true;
+                            }
+
+                            for (var j = 0; j < scripts.length; j++) {
+                                addScript(scripts[j].src, scripts[j].text);
+                            }
+                        }
+                    }
+                }
+            })();</script></body></html>
