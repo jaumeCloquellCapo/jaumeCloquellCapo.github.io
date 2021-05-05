@@ -1,3 +1,2 @@
 User-agent: *
 Disallow:
-Sitemap: https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/sitemap.xml

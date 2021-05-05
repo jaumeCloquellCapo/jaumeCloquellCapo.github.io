@@ -1,8 +1,183 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Composing Reusable Modal Dialogs with Vue.js - jaumecloquellcapo</title><meta name="description" content=" As a both Vue.js developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html"><link rel="amphtml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/amp/composing-reusable-modal-dialogs-with-vuejs.html"><link rel="alternate" type="application/atom+xml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.xml"><link rel="alternate" type="application/json" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.json"><meta property="og:title" content="Composing Reusable Modal Dialogs with Vue.js"><meta property="og:site_name" content="jaumecloquellcapo"><meta property="og:description" content=" As a both Vue.js developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a&hellip;"><meta property="og:url" content="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/favicon.ico" type="image/x-icon"><style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--logo-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--menu-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}</style><link rel="stylesheet" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/css/style.css?v=47f8a4f068382085929af7e1db2c0ae5"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html"},"headline":"Composing Reusable Modal Dialogs with Vue.js","datePublished":"2019-12-02T19:25","dateModified":"2020-09-03T18:17","description":" As a both Vue.js developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a&hellip;","author":{"@type":"Person","name":"jaume cloquell capo"},"publisher":{"@type":"Organization","name":"jaume cloquell capo"}}</script></head><body><div class="site-container"><header class="top" id="js-header"><a class="logo" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/">jaumecloquellcapo</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/" title="https://jaumecloquellcapo.github.io/jaumeCloquellCapo.github.io/" target="_self">Home</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/" target="_self">JS</a></li><li class="has-submenu"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/machine-learning/" target="_self" aria-haspopup="true">AI</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/abm/" target="_self">ABM</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/nlp/" target="_self">NLP</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/geneticalgorithms/" target="_self">Genetic Algorithms</a></li></ul></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/golang/" target="_self">Golang</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/search.html" class="search__form"><input class="search__input js-search-input" type="search" name="q" placeholder="search..." aria-label="search..." autofocus="autofocus"></form><button class="search__close js-search-close" aria-label="Close">Close</button></div></div><button class="search__btn js-search-btn" aria-label="Search"><svg role="presentation" focusable="false"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#search"/></svg></button></div></header><main><article class="post"><div class="hero"><figure class="hero__image hero__image--overlay"><img src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix.jpg" srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xs.jpg 300w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-sm.jpg 480w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-md.jpg 768w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-lg.jpg 1024w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xl.jpg 1360w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" alt=""></figure><header class="hero__content"><div class="wrapper"><div class="post__meta"><time datetime="2019-12-02T19:25">December 2, 2019</time></div><h1>Composing Reusable Modal Dialogs with Vue.js</h1><div class="post__meta post__meta--author"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="feed__author invert">jaume cloquell capo</a></div></div></header></div><div class="wrapper post__entry"><div class="card-block html-content"><p>As a both Vue.js  developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a better way to code them.</p><p>I’ve also seen other approaches, mostly storing modal window states in global app store, which of course required developers to store more and more data as the app grew — and so did the number of used modal windows. The store quickly became bloated with data that was relevant only for a short amount of time for a small part of the UI.</p><p>While building SPAs with Vue.js, my approach was mostly to create a <code>&lt;Modal /&gt;</code> wrapper component (with a <code>slot</code> for the content) which held an <em>internal boolean open state</em> and had <em>methods</em> such as <code>open()</code> and <code>close()</code>, which toggled its state. I accessed those methods through a <code>$ref</code> in the Component that displayed the modal. An example could look similar to this:</p><pre><code>methods: {
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Composing Reusable Modal Dialogs with Vue.js - jaumecloquellcapo </title>
+        <meta name="description" content=" As a both Vue.js developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a&hellip;" />
+         
+        <meta name="generator" content="Publii Open-Source CMS for Static Site" />
+        <link rel="canonical" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html">
+        
+        <link rel="alternate" type="application/atom+xml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.xml" />
+<link rel="alternate" type="application/json" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.json" />
+
+        <meta property="og:title" content="Composing Reusable Modal Dialogs with Vue.js" /><meta property="og:site_name" content="jaumecloquellcapo" /><meta property="og:description" content=" As a both Vue.js developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a&hellip;" /><meta property="og:url" content="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html" /><meta property="og:type" content="article" />
+	        <link rel="shortcut icon" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/favicon.ico" type="image/x-icon" />
+        <style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--logo-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--menu-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}</style>
+        <link rel="stylesheet" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/css/style.css?v=319e095e568825c63a55e23b71420052">
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html"},"headline":"Composing Reusable Modal Dialogs with Vue.js","datePublished":"2019-12-02T19:25","dateModified":"2020-09-03T18:17","description":" As a both Vue.js developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a&hellip;","author":{"@type":"Person","name":"jaume cloquell capo"},"publisher":{"@type":"Organization","name":"jaume cloquell capo"}}</script>
+        
+        
+    </head>
+    <body>
+        <div class="site-container">
+   <header class="top" id="js-header">
+      <a class="logo" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/">
+            jaumecloquellcapo
+      </a>
+            <nav class="navbar js-navbar">
+               <button
+                  class="navbar__toggle js-toggle"
+                  aria-label="Menu"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                  <span class="navbar__toggle-box">
+                     <span class="navbar__toggle-inner">Menu</span>
+                  </span>
+               </button>
+             <ul class="navbar__menu">
+                      <li>
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/"
+                              title="https://jaumecloquellcapo.github.io/jaumeCloquellCapo.github.io/"
+                              target="_self"
+         >
+                           Home
+                       </a>
+         
+                  </li>
+                      <li>
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/"
+                              target="_self"
+         >
+                           JS
+                       </a>
+         
+                  </li>
+                      <li class="has-submenu">
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/machine-learning/"
+                              target="_self"
+                              aria-haspopup="true"
+                           >
+                           AI
+                       </a>
+         
+                            <ul class="navbar__submenu level-2" aria-hidden="true" >
+                                     <li>
+                                       <a
+                                          href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/abm/"
+                                             target="_self"
+                        >
+                                          ABM
+                                      </a>
+                        
+                                 </li>
+                                     <li>
+                                       <a
+                                          href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/nlp/"
+                                             target="_self"
+                        >
+                                          NLP
+                                      </a>
+                        
+                                 </li>
+                                     <li>
+                                       <a
+                                          href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/geneticalgorithms/"
+                                             target="_self"
+                        >
+                                          Genetic Algorithms
+                                      </a>
+                        
+                                 </li>
+                            </ul>
+                  </li>
+                      <li>
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/golang/"
+                              target="_self"
+         >
+                           Golang
+                       </a>
+         
+                  </li>
+             </ul>
+            </nav>
+         <div class="search">
+            <div class="search__overlay js-search-overlay">
+               <div class="search__overlay-inner">
+                  <form action="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/search.html" class="search__form">
+                     <input
+                        class="search__input js-search-input"
+                        type="search"
+                        name="q"
+                        placeholder="search..." 
+                        aria-label="search..."
+                        autofocus="autofocus"/>
+                  </form>
+                  <button class="search__close js-search-close" aria-label="Close">
+                     Close
+                  </button>
+               </div>
+            </div>
+            <button class="search__btn js-search-btn" aria-label="Search">
+               <svg role="presentation" focusable="false">
+                  <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#search"/>
+               </svg>
+            </button>
+         </div>
+   </header>
+<main>
+      <article class="post">
+         <div class="hero">
+             
+                     <figure class="hero__image hero__image--overlay">
+                         
+                        <img
+                           src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix.jpg"
+                               srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xs.jpg 300w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-sm.jpg 480w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-md.jpg 768w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-lg.jpg 1024w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xl.jpg 1360w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-2xl.jpg 1600w"   sizes="(max-width: 1600px) 100vw, 1600px" 
+                            loading="eager"
+                           alt="">
+                         
+                         
+                     </figure>
+             
+            <header class="hero__content">
+               <div class="wrapper">
+                     <div class="post__meta">
+                        <time datetime="2019-12-02T19:25">
+                              December 2, 2019
+                        </time>
+                     </div>
+                  <h1>
+                     Composing Reusable Modal Dialogs with Vue.js
+                  </h1>
+                     <div class="post__meta post__meta--author">
+                           <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="feed__author invert">jaume cloquell capo</a>
+                     </div>
+               </div>
+            </header>
+         </div>
+
+         <div class="wrapper post__entry">           
+            <div class="card-block html-content">
+<p>As a both Vue.js  developer, I’ve been assigned to/leading various projects which were mostly about building UIs. One thing I was always battling was popup Dialogs — not in the sense that they didn’t work, but I was always left wondering whether there’s a better way to code them.</p>
+<p>I’ve also seen other approaches, mostly storing modal window states in global app store, which of course required developers to store more and more data as the app grew — and so did the number of used modal windows. The store quickly became bloated with data that was relevant only for a short amount of time for a small part of the UI.</p>
+<p>While building SPAs with Vue.js, my approach was mostly to create a <code>&lt;Modal /&gt;</code> wrapper component (with a <code>slot</code> for the content) which held an <em>internal boolean open state</em> and had <em>methods</em> such as <code>open()</code> and <code>close()</code>, which toggled its state. I accessed those methods through a <code>$ref</code> in the Component that displayed the modal. An example could look similar to this:</p>
+<pre><code>methods: {
   openModal () {
     this.$refs.modal.show()
   }
-}</code></pre><p>The downside to this was that there were simply too many <code>&lt;Modal /&gt;</code> components as my app grew. They were also inside the Component that was displaying them HTML wise, so there were sometimes overlay issues which z-index simply couldn’t solve. I was wondering whether there’s a better way.</p><h2>One modal root to rule them all</h2><p>I already mentioned the z-index issue. When you need to display something on the top of everything else HTML wise, it only makes sense that your tree should be structured accordingly, instead of using hacks to force your elements to appear on the top of your site when actually.. they’re not.</p><p>So we’re aiming for something like this</p><pre><code>&lt;!doctype html&gt;
+}</code></pre>
+<p>The downside to this was that there were simply too many <code>&lt;Modal /&gt;</code> components as my app grew. They were also inside the Component that was displaying them HTML wise, so there were sometimes overlay issues which z-index simply couldn’t solve. I was wondering whether there’s a better way.</p>
+<h2>One modal root to rule them all</h2>
+<p>I already mentioned the z-index issue. When you need to display something on the top of everything else HTML wise, it only makes sense that your tree should be structured accordingly, instead of using hacks to force your elements to appear on the top of your site when actually.. they’re not.</p>
+<p>So we’re aiming for something like this</p>
+<pre><code>&lt;!doctype html&gt;
 &lt;html&gt;
 &lt;body&gt;
   &lt;div id="app"&gt;
@@ -11,10 +186,20 @@
   &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>Where <code>#modal-root</code> will always be on the bottom (but top, visually 😅) of your structure and it will always display your current selected element.</p><p><strong>That means if you’re aiming to have multiple modals in your app, this is not an ideal approach for you. I will go with cases where I need only one dialog open at a time.</strong></p><p>We will accomplish this reactivity of the root element by using EventBus, so <strong>any child can trigger opening the dialog displaying any component from anywhere</strong>.</p><h3>1. Creating the EventBus</h3><figure class="post__image"><img loading="lazy" src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-xs.png 300w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-sm.png 480w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-md.png 768w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-lg.png 1024w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-xl.png 1360w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-2xl.png 1600w" alt="" width="1200" height="797"></figure><pre><code>import Vue from 'vue'
+</code></pre>
+<p>Where <code>#modal-root</code> will always be on the bottom (but top, visually 😅) of your structure and it will always display your current selected element.</p>
+<p><strong>That means if you’re aiming to have multiple modals in your app, this is not an ideal approach for you. I will go with cases where I need only one dialog open at a time.</strong></p>
+<p>We will accomplish this reactivity of the root element by using EventBus, so <strong>any child can trigger opening the dialog displaying any component from anywhere</strong>.</p>
+<h3>1. Creating the EventBus</h3>
+<figure class="post__image"><img loading="lazy"  src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-xs.png 300w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-sm.png 480w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-md.png 768w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-lg.png 1024w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-xl.png 1360w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/posts/9/responsive/rOmK42lwFKu0ixb19LoWQCccuFiEMHJ4MajSb4lT-2xl.png 1600w"  alt="" width="1200" height="797"></figure>
+<pre><code>import Vue from 'vue'
 
 export const ModalBus = new Vue()
-</code></pre><p><strong>VueModalBus - eventBus.js</strong></p><p>Let’s start by creating a simple <code>ModalBus</code> inside our eventBus.js file. I chose a named export because I aim to work with more event buses, but that’s really a personal preference. If you feel comfortable using default exports, feel free to do so.</p><h3>2. Creating the Modal (presentational) Component</h3><pre><code>&lt;template&gt;
+</code></pre>
+<p><strong>VueModalBus - eventBus.js</strong></p>
+<p>Let’s start by creating a simple <code>ModalBus</code> inside our eventBus.js file. I chose a named export because I aim to work with more event buses, but that’s really a personal preference. If you feel comfortable using default exports, feel free to do so.</p>
+<h3>2. Creating the Modal (presentational) Component</h3>
+<pre><code>&lt;template&gt;
   &lt;div class="modal-backdrop"
     v-show="isOpen"
     :class="{open: isOpen}"
@@ -69,7 +254,19 @@ export default {
   color: rgb(180, 180, 180);
 }
 &lt;/style&gt;
-</code></pre><p><strong>VueModalBus - Modal.vue</strong></p><p>As you can see, this is merely a presentational component. It gets the <code>isOpen</code> and <code>title</code> properties from a parent we don’t have yet.</p><p>We handle several things in here:</p><ul><li>Emitting an <code>onClose</code> call when we click the backdrop outside the dialog</li><li>Displaying the whole <strong>Modal component conditional logic</strong></li><li>Displaying <strong>title conditional logic</strong></li><li>Using <code>&lt;slot /&gt;</code> to display children inside the Modal</li><li>Defining some basic styles</li></ul><h3>3. Creating the ModalRoot component</h3><pre><code>&lt;template&gt;
+</code></pre>
+<p><strong>VueModalBus - Modal.vue</strong></p>
+<p>As you can see, this is merely a presentational component. It gets the <code>isOpen</code> and <code>title</code> properties from a parent we don’t have yet.</p>
+<p>We handle several things in here:</p>
+<ul>
+<li>Emitting an <code>onClose</code> call when we click the backdrop outside the dialog</li>
+<li>Displaying the whole <strong>Modal component conditional logic</strong></li>
+<li>Displaying <strong>title conditional logic</strong></li>
+<li>Using <code>&lt;slot /&gt;</code> to display children inside the Modal</li>
+<li>Defining some basic styles</li>
+</ul>
+<h3>3. Creating the ModalRoot component</h3>
+<pre><code>&lt;template&gt;
   &lt;Modal :isOpen="!!component" :title="title" @onClose="handleClose"&gt;
     &lt;component :is="component" @onClose="handleClose" v-bind="props" /&gt;
   &lt;/Modal&gt;
@@ -108,14 +305,24 @@ export default {
   components: { Modal },
 }
 &lt;/script&gt;
-</code></pre><p><strong>VueModalBus - ModalRoot.vue</strong></p><p>The <code>ModalRoot</code> component is the one that’s listening to the <code>ModalBus</code> events and handling all the logic — and the one that’s displaying the <code>&lt;Modal /&gt;</code>. It’s also the one we want to place inside our <code>&lt;App /&gt;</code> on the bottom of our HTML structure.</p><p>Let’s debunk what’s happening under the hood:</p><ul><li><strong>Script:</strong></li></ul><p>We’re storing 3 things in our state (data):</p><pre><code>data () {
+</code></pre>
+<p><strong>VueModalBus - ModalRoot.vue</strong></p>
+<p>The <code>ModalRoot</code> component is the one that’s listening to the <code>ModalBus</code> events and handling all the logic — and the one that’s displaying the <code>&lt;Modal /&gt;</code>. It’s also the one we want to place inside our <code>&lt;App /&gt;</code> on the bottom of our HTML structure.</p>
+<p>Let’s debunk what’s happening under the hood:</p>
+<ul>
+<li><strong>Script:</strong></li>
+</ul>
+<p>We’re storing 3 things in our state (data):</p>
+<pre><code>data () {
   return {
     component: null,
     title: '',
     props: null
   }
 },
-</code></pre><p>Those properties will be received via the <code>ModalBus</code> and they’re carrying the information about the component we’re going to display, the dialog’s title and any needed props for the child component inside the <code>&lt;Modal /&gt;</code>.</p><pre><code>created () {
+</code></pre>
+<p>Those properties will be received via the <code>ModalBus</code> and they’re carrying the information about the component we’re going to display, the dialog’s title and any needed props for the child component inside the <code>&lt;Modal /&gt;</code>.</p>
+<pre><code>created () {
   ModalBus.$on('open', ({ component, title = '', props = null }) =&gt; {
     this.component = component
     this.title = title
@@ -123,10 +330,14 @@ export default {
   })
   document.addEventListener('keyup', this.handleKeyup)
 },
-</code></pre><p>Right upon the <code>&lt;ModalRoot /&gt;</code>'s creation, we’re connecting to the <code>ModalBus</code> and listening to the <code>open</code> event, which is what we’ll call when we want to open the Modal from any component, passing our values in. You can see we’re accepting and setting those parameters that I mentioned above — <strong>component, title</strong> and <strong>props</strong>. We’re also adding a listener for the (Escape) key.</p><pre><code>beforeDestroy () {
+</code></pre>
+<p>Right upon the <code>&lt;ModalRoot /&gt;</code>'s creation, we’re connecting to the <code>ModalBus</code> and listening to the <code>open</code> event, which is what we’ll call when we want to open the Modal from any component, passing our values in. You can see we’re accepting and setting those parameters that I mentioned above — <strong>component, title</strong> and <strong>props</strong>. We’re also adding a listener for the (Escape) key.</p>
+<pre><code>beforeDestroy () {
   document.removeEventListener('keyup', this.handleKeyup)
 },
-</code></pre><p>We have to be careful and destroy the listener before the <code>&lt;ModalRoot /&gt;</code> itself is destroyed.</p><pre><code>methods: {
+</code></pre>
+<p>We have to be careful and destroy the listener before the <code>&lt;ModalRoot /&gt;</code> itself is destroyed.</p>
+<pre><code>methods: {
   handleClose () {
     this.component = null
   },
@@ -134,8 +345,27 @@ export default {
     if (e.keyCode === 27) this.handleClose()
   }
 },
-</code></pre><p>Then there’s our simple <code>handleClose()</code> method which is only setting component to <em>null</em> (which changes our <code>isOpen</code> prop for the <code>&lt;Modal /&gt;</code> component, more in the template section) and <code>handleKeyup()</code> method, which is checking whether we’re pressing the <em>Escape</em> key and then calling <code>handleClose()</code>, should the condition be met.</p><blockquote><p>(Note that you can also listen to the <code>_close_</code> event the same way you listen to <code>_open_</code> and call handleClose() inside, so the modal can also be closed from anywhere)</p></blockquote><ul><li><strong>Template:</strong></li><li>We’re using our <code>&lt;Modal /&gt;</code> presentational component to wrap our dynamic <code>&lt;component /&gt;</code></li><li>We’re setting the <code>isOpen</code> and <code>title</code> props to <code>&lt;Modal /&gt;</code> based on our incoming data (<em>isOpen</em> is <em>true</em> whenever component’s not empty)</li><li>We’re also passing an <code>@onClose</code> listener to react to <code>&lt;Modal /&gt;</code>'s backdrop click, which is when an <code>$emit('onClose')</code> happens in the <code>&lt;Modal /&gt;</code></li></ul><pre><code>&lt;component :is="component" @onClose="handleClose" v-bind="props" /&gt;
-</code></pre><ul><li>We’re displaying the <code>&lt;component /&gt;</code> inside the <code>&lt;Modal /&gt;</code>, therefore making use of the <code>&lt;slot /&gt;</code> functionality inside it</li><li>We’re also listening to the <code>@onClose</code> emit (the same way like in <code>&lt;Modal /&gt;</code> )</li><li>We’re binding whatever <code>props</code> we set in the <code>open()</code> ModalBus call to the <code>&lt;component /&gt;</code>, so they find their way to the destined component.</li></ul><h3>4. Making use of the</h3><p>Everything should be connected now — we just need to make use of it! I’ve created a few examples which are using Tailwind to show how the <code>&lt;ModalRoot /&gt;</code> can actually be used.</p><pre><code>&lt;template&gt;
+</code></pre>
+<p>Then there’s our simple <code>handleClose()</code> method which is only setting component to <em>null</em> (which changes our <code>isOpen</code> prop for the <code>&lt;Modal /&gt;</code> component, more in the template section) and <code>handleKeyup()</code> method, which is checking whether we’re pressing the <em>Escape</em> key and then calling <code>handleClose()</code>, should the condition be met.</p>
+<blockquote>
+<p>(Note that you can also listen to the <code>_close_</code> event the same way you listen to <code>_open_</code> and call handleClose() inside, so the modal can also be closed from anywhere)</p>
+</blockquote>
+<ul>
+<li><strong>Template:</strong></li>
+<li>We’re using our <code>&lt;Modal /&gt;</code> presentational component to wrap our dynamic <code>&lt;component /&gt;</code></li>
+<li>We’re setting the <code>isOpen</code> and <code>title</code> props to <code>&lt;Modal /&gt;</code> based on our incoming data (<em>isOpen</em> is <em>true</em> whenever component’s not empty)</li>
+<li>We’re also passing an <code>@onClose</code> listener to react to <code>&lt;Modal /&gt;</code>'s backdrop click, which is when an <code>$emit('onClose')</code> happens in the <code>&lt;Modal /&gt;</code></li>
+</ul>
+<pre><code>&lt;component :is="component" @onClose="handleClose" v-bind="props" /&gt;
+</code></pre>
+<ul>
+<li>We’re displaying the <code>&lt;component /&gt;</code> inside the <code>&lt;Modal /&gt;</code>, therefore making use of the <code>&lt;slot /&gt;</code> functionality inside it</li>
+<li>We’re also listening to the <code>@onClose</code> emit (the same way like in <code>&lt;Modal /&gt;</code> )</li>
+<li>We’re binding whatever <code>props</code> we set in the <code>open()</code> ModalBus call to the <code>&lt;component /&gt;</code>, so they find their way to the destined component.</li>
+</ul>
+<h3>4. Making use of the</h3>
+<p>Everything should be connected now — we just need to make use of it! I’ve created a few examples which are using Tailwind to show how the <code>&lt;ModalRoot /&gt;</code> can actually be used.</p>
+<pre><code>&lt;template&gt;
   &lt;div id="app"&gt;
     &lt;div class="content"&gt;
       &lt;Button @click="openSuccessAlert" class="mr-2"&gt;
@@ -202,13 +432,19 @@ export default {
   align-items: center
 }
 &lt;/style&gt;
-</code></pre><p><strong>VueModalBus - App.vue</strong></p><p><strong>1. Success alert</strong></p><p>The first case is very simple. We’re calling a generic <code>&lt;Alert /&gt;</code> component and passing some basic config in:</p><pre><code>openSuccessAlert () {
+</code></pre>
+<p><strong>VueModalBus - App.vue</strong></p>
+<p><strong>1. Success alert</strong></p>
+<p>The first case is very simple. We’re calling a generic <code>&lt;Alert /&gt;</code> component and passing some basic config in:</p>
+<pre><code>openSuccessAlert () {
   ModalBus.$emit('open', {
     component: Alert,
     props: { text: 'Everything is working great!', type: 'success' }
   })
 },
-</code></pre><p>The <code>&lt;Alert /&gt;</code> component is expecting a <code>text</code> and a <code>type</code>. We’re not passing any title for our dialog, so it won’t be displayed.</p><pre><code>&lt;template&gt;
+</code></pre>
+<p>The <code>&lt;Alert /&gt;</code> component is expecting a <code>text</code> and a <code>type</code>. We’re not passing any title for our dialog, so it won’t be displayed.</p>
+<pre><code>&lt;template&gt;
   &lt;div :class="classes"&gt;
     &lt;span class="block sm:inline"&gt;{{ text }}&lt;/span&gt;
   &lt;/div&gt;
@@ -244,17 +480,25 @@ export default {
   },
 }
 &lt;/script&gt;
-</code></pre><p><strong>VueModalBus - Alert.vue</strong></p><p><strong>2. Danger alert</strong></p><pre><code>openDangerAlert () {
+</code></pre>
+<p><strong>VueModalBus - Alert.vue</strong></p>
+<p><strong>2. Danger alert</strong></p>
+<pre><code>openDangerAlert () {
   const props = {
     type: 'error',
     text: 'The server returned 500 again! omg!'
   }
   ModalBus.$emit('open', { component: Alert, title: 'An error has occured', props: props })
 },
-</code></pre><p>We’re using the <code>&lt;Alert /&gt;</code> component again, this time passing the <code>"error"</code> type and also providing a <code>title</code> for the dialog.</p><p><strong>3. A Component that’s closable from inside</strong></p><pre><code>openClosableInside () {
+</code></pre>
+<p>We’re using the <code>&lt;Alert /&gt;</code> component again, this time passing the <code>"error"</code> type and also providing a <code>title</code> for the dialog.</p>
+<p><strong>3. A Component that’s closable from inside</strong></p>
+<pre><code>openClosableInside () {
   ModalBus.$emit('open', { component: ClosableInside, title: 'Close dialog from component' })
 },
-</code></pre><p>We’re not passing anything special to the <code>open()</code> call, instead the magic happens inside the <code>&lt;ClosableInside /&gt;</code> example component:</p><pre><code>&lt;template&gt;
+</code></pre>
+<p>We’re not passing anything special to the <code>open()</code> call, instead the magic happens inside the <code>&lt;ClosableInside /&gt;</code> example component:</p>
+<pre><code>&lt;template&gt;
   &lt;div&gt;
     &lt;p class="mb-4"&gt;
       This dialog is closable from the inside of the component!
@@ -271,11 +515,18 @@ export default {
   components: { Button }
 }
 &lt;/script&gt;
-</code></pre><p><strong>VueModalBus - ClosableInside.vue</strong></p><pre><code>&lt;Button @click="$emit('onClose')" color="gray"&gt;Close&lt;/Button&gt;
-</code></pre><p>Because the <code>&lt;ModalRoot /&gt;</code> is displaying the <code>component</code>, in our case the <code>&lt;ClosableInside /&gt;</code> component, and it’s listening to the <code>@onClose</code> event, we can $emit it inside the component and the modal window will close. The “React way” would be passing this close handler via props, which is also possible, of course.</p><p><strong>4. A Sign In form</strong></p><p>This form is almost completely copied from the Tailwind documentation and it’s included for presentational purposes. It doesn’t do much, but you can pass in whatever props you like and work with them.</p><pre><code>openSignIn () {
+</code></pre>
+<p><strong>VueModalBus - ClosableInside.vue</strong></p>
+<pre><code>&lt;Button @click="$emit('onClose')" color="gray"&gt;Close&lt;/Button&gt;
+</code></pre>
+<p>Because the <code>&lt;ModalRoot /&gt;</code> is displaying the <code>component</code>, in our case the <code>&lt;ClosableInside /&gt;</code> component, and it’s listening to the <code>@onClose</code> event, we can $emit it inside the component and the modal window will close. The “React way” would be passing this close handler via props, which is also possible, of course.</p>
+<p><strong>4. A Sign In form</strong></p>
+<p>This form is almost completely copied from the Tailwind documentation and it’s included for presentational purposes. It doesn’t do much, but you can pass in whatever props you like and work with them.</p>
+<pre><code>openSignIn () {
   ModalBus.$emit('open', { component: SignInForm, title: 'New user' })
 }
-</code></pre><pre><code>&lt;template&gt;
+</code></pre>
+<pre><code>&lt;template&gt;
   &lt;form class="mb-4"&gt;
     &lt;div class="mb-4"&gt;
       &lt;label class="block text-gray-700 text-sm font-bold mb-2"&gt;
@@ -305,7 +556,10 @@ export default {
     &lt;/div&gt;
   &lt;/form&gt;
 &lt;/template&gt;
-</code></pre><p><strong>VueModalBus - SignInForm.vue</strong></p><p>The beautiful thing about this is you can extend it whatever way you want. Let’s say we want to add a modal animation!</p><pre><code>&lt;template&gt;
+</code></pre>
+<p><strong>VueModalBus - SignInForm.vue</strong></p>
+<p>The beautiful thing about this is you can extend it whatever way you want. Let’s say we want to add a modal animation!</p>
+<pre><code>&lt;template&gt;
   &lt;transition name="fade"&gt;
     &lt;div class="modal-backdrop"
       v-show="isOpen"
@@ -372,7 +626,10 @@ export default {
   color: rgb(180, 180, 180);
 }
 &lt;/style&gt;
-</code></pre><p><strong>VueModalBus - ModalAnimated.vue</strong></p><p>We pretty much just added a <code>&lt;**transition name=”fade”**&gt;</code> and some CSS rules in the <code>&lt;style /&gt;</code> section:</p><pre><code>.fade-enter-active, .fade-leave-active {
+</code></pre>
+<p><strong>VueModalBus - ModalAnimated.vue</strong></p>
+<p>We pretty much just added a <code>&lt;**transition name=”fade”**&gt;</code> and some CSS rules in the <code>&lt;style /&gt;</code> section:</p>
+<pre><code>.fade-enter-active, .fade-leave-active {
   transition: 0.5s;
 }
 
@@ -383,7 +640,9 @@ export default {
 .fade-enter .modal-dialog, .fade-leave-to .modal-dialog {
   transform: translateY(-20%);
 }
-</code></pre><p>A pretty common case is where you want to persist the modal’s (open) state on backdrop click, for example when you’re filling a form and you want to protect the user from accidentally closing the window.</p><pre><code>&lt;template&gt;
+</code></pre>
+<p>A pretty common case is where you want to persist the modal’s (open) state on backdrop click, for example when you’re filling a form and you want to protect the user from accidentally closing the window.</p>
+<pre><code>&lt;template&gt;
   &lt;Modal :isOpen="!!component" :title="title" @onClose="handleOutsideClick"&gt;
     &lt;component :is="component" @onClose="handleClose" v-bind="props" /&gt;
   &lt;/Modal&gt;
@@ -428,21 +687,113 @@ export default {
   components: { Modal }
 }
 &lt;/script&gt;
-</code></pre><p><strong>VueModalBus - ModalRootConfirmClose.vue</strong></p><ul><li>The <code>&lt;ModalRoot /&gt;</code> is storing another property in the <code>data()</code> now — <code>**closeOnClick**: **true**</code>. We altered the <code>ModalBus.$on(**‘open’, ...**)</code> function to accept the new param.</li></ul><pre><code>ModalBus.$on('open', ({ component, title = '', props = null, closeOnClick = true }) =&gt; {
+</code></pre>
+<p><strong>VueModalBus - ModalRootConfirmClose.vue</strong></p>
+<ul>
+<li>The <code>&lt;ModalRoot /&gt;</code> is storing another property in the <code>data()</code> now — <code>**closeOnClick**: **true**</code>. We altered the <code>ModalBus.$on(**‘open’, ...**)</code> function to accept the new param.</li>
+</ul>
+<pre><code>ModalBus.$on('open', ({ component, title = '', props = null, closeOnClick = true }) =&gt; {
   this.component = component
   this.title = title
   this.props = props
   this.closeOnClick = closeOnClick
 })
-</code></pre><p>Let’s create a different handler for the <code>&lt;Modal /&gt;</code>'s <code>@onClose</code> event, which gets emitted when a user clicks the backdrop of the <code>&lt;Modal /&gt;</code>.</p><pre><code>@onClose="handleOutsideClick"
-</code></pre><p>The body of the function now determines whether to call <code>handleClose()</code> or not based on the <code>**closeOnClick**</code>property</p><pre><code>handleOutsideClick () {
+</code></pre>
+<p>Let’s create a different handler for the <code>&lt;Modal /&gt;</code>'s <code>@onClose</code> event, which gets emitted when a user clicks the backdrop of the <code>&lt;Modal /&gt;</code>.</p>
+<pre><code>@onClose="handleOutsideClick"
+</code></pre>
+<p>The body of the function now determines whether to call <code>handleClose()</code> or not based on the <code>**closeOnClick**</code>property</p>
+<pre><code>handleOutsideClick () {
   if (!this.closeOnClick) return
   this.handleClose()
 },
-</code></pre><p>And that’s it! Let’s try it with the <code>&lt;SignInForm /&gt;</code> component to see if it works by passing the <code>closeOnClick</code> parameter (now you can close it using only the Escape key):</p><pre><code>openSignIn () {
+</code></pre>
+<p>And that’s it! Let’s try it with the <code>&lt;SignInForm /&gt;</code> component to see if it works by passing the <code>closeOnClick</code> parameter (now you can close it using only the Escape key):</p>
+<pre><code>openSignIn () {
   ModalBus.$emit('open', { component: SignInForm, title: 'New user', closeOnClick: false })
 }
-</code></pre></div></div><footer class="wrapper post__footer"><p class="post__last-updated">This article was updated on September 3, 2020</p><ul class="post__tag"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/">JavaScript</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/vuejs/">Vuejs</a></li></ul><div class="post__share"><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2FjaumeCloquellCapo.github.io%2FjaumeCloquellCapo.github.io%2Fcomposing-reusable-modal-dialogs-with-vuejs.html&amp;title=Composing%20Reusable%20Modal%20Dialogs%20with%20Vue.js" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span></a></div><div class="post__bio bio"><div class="bio__info"><h3 class="bio__name"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="invert" rel="author">jaume cloquell capo</a></h3></div></div></footer></article><nav class="post__nav"><div class="post__nav-inner"><div class="post__nav-prev"><svg width="1.041em" height="0.416em" aria-hidden="true"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-prev"/></svg> <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/understanding-vuex-and-how-it-works.html" class="invert post__nav-link" rel="prev"><span>Previous</span> Understanding Vuex and how it works.</a></div><div class="post__nav-next"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/la-simulacion-social-una-nueva-via-para-el-marketing.html" class="invert post__nav-link" rel="next"><span>Next</span> La simulación social. ¿Una nueva vía para el marketing? </a><svg width="1.041em" height="0.416em" aria-hidden="true"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-next"/></svg></div></div></nav><div class="post__comments"><div class="wrapper"><h2 class="h5">Comments</h2><div id="disqus_thread"></div><script>var disqus_config = function () {
+</code></pre>
+</div>            
+         </div>
+
+            <footer class="wrapper post__footer">
+
+                     <p class="post__last-updated">
+                        This article was updated on
+                           September 3, 2020
+                     </p>
+
+                     <ul class="post__tag">
+                           <li>
+                              <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/">JavaScript</a>
+                           </li>
+                           <li>
+                              <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/vuejs/">Vuejs</a>
+                           </li>
+                     </ul>
+
+                  <div class="post__share">
+                     
+                     
+                     
+                     
+                        <a
+                           href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2FjaumeCloquellCapo.github.io%2FjaumeCloquellCapo.github.io%2Fcomposing-reusable-modal-dialogs-with-vuejs.html&amp;title=Composing%20Reusable%20Modal%20Dialogs%20with%20Vue.js"
+                           class="js-share linkedin"
+                           rel="nofollow noopener noreferrer">
+                           <svg class="icon" aria-hidden="true" focusable="false">
+                              <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/>
+                           </svg>
+                           <span>LinkedIn</span>
+                        </a>
+                     
+                     
+                  </div>
+
+                  <div class="post__bio bio">
+                        <div class="bio__info">
+                           <h3 class="bio__name">
+                              <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="invert" rel="author">jaume cloquell capo</a>
+                           </h3>
+
+                        </div>
+                  </div>
+            </footer>
+      </article>
+
+            <nav class="post__nav">
+               <div class="post__nav-inner">
+                     <div class="post__nav-prev">
+                        <svg width="1.041em" height="0.416em" aria-hidden="true">
+                           <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-prev"/>
+                        </svg>
+
+                        <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/understanding-vuex-and-how-it-works.html" class="invert post__nav-link" rel="prev">
+                           <span>Previous</span>
+                           Understanding Vuex and how it works.
+                        </a>
+                     </div>
+                     <div class="post__nav-next">
+                        <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/la-simulacion-social-una-nueva-via-para-el-marketing.html" class="invert post__nav-link" rel="next">
+                           <span>Next</span>
+                           La simulación social. ¿Una nueva vía para el marketing?
+                        </a>
+                        <svg width="1.041em" height="0.416em" aria-hidden="true">
+                           <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-next"/>
+                        </svg>
+                     </div>
+               </div>
+            </nav>
+
+
+         <div class="post__comments">
+            <div class="wrapper">
+               <h2 class="h5">
+                  Comments
+               </h2>
+               <div id="disqus_thread"></div>
+               <script>
+                   var disqus_config = function () {
                        this.page.url = 'https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/composing-reusable-modal-dialogs-with-vuejs.html';
                		this.page.identifier = '9';
                    };
@@ -472,14 +823,47 @@ export default {
                
                    window.onscroll = function() {
                        publiiLoadDisqus();
-                   };</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noreferrer">comments powered by Disqus.</a></noscript></div></div></main><footer class="footer"><div class="footer__social"><a href="https://www.linkedin.com/in/jaume-cloquell-119765b7" aria-label="LinkedIn"><svg><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/></svg></a></div><div class="footer__copyright"><p>jaume cloquell capo</p></div><button class="footer__bttop js-footer__bttop" aria-label="Back to top"><svg><title>Back to top</title><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = {    
+                   };
+               </script>
+               <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noreferrer">comments powered by Disqus.</a></noscript>
+            </div>
+         </div>
+
+
+</main>
+<footer class="footer">
+        <div class="footer__social">
+                <a href="https://www.linkedin.com/in/jaume-cloquell-119765b7" aria-label="LinkedIn">
+                    <svg>
+                        <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/>
+                    </svg>
+                </a>
+        </div>
+        <div class="footer__copyright">
+            <p>jaume cloquell capo</p>
+        </div>
+       <button class="footer__bttop js-footer__bttop" aria-label="Back to top"> 
+           <svg>
+               <title>Back to top</title>
+               <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#toparrow" />
+           </svg>
+       </button>   
+</footer>
+</div>
+
+<script>
+   window.publiiThemeMenuConfig = {    
         mobileMenuMode: 'overlay',
         animationSpeed: 300,
         submenuWidth: 'auto',
         doubleClickTime: 500,
         mobileMenuExpandableSubmenus: true, 
         relatedContainerForOverlayMenuSelector: '.top',
-   };</script><script defer="defer" src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/js/scripts.min.js?v=f4c4d35432d0e17d212f2fae4e0f8247"></script><script>var images = document.querySelectorAll('img[loading]');
+   };
+</script>
+<script defer src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/js/scripts.min.js?v=f4c4d35432d0e17d212f2fae4e0f8247"></script>
+    <script>        
+        var images = document.querySelectorAll('img[loading]');
 
         for (var i = 0; i < images.length; i++) {
             if (images[i].complete) {
@@ -489,7 +873,65 @@ export default {
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script><div class="cookie-popup js-cookie-popup cookie-popup--uses-badge"><h2>This website uses cookies</h2><p>Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality. <a href="#not-specified">More details...</a></p><form><input id="gdpr-necessary" name="gdpr-necessary" checked="checked" disabled="disabled" type="checkbox"> <label for="gdpr-necessary">Required</label> <input id="gdpr-functions" name="gdpr-functions" type="checkbox"> <label for="gdpr-functions">Functionality</label> <input id="gdpr-analytics" name="gdpr-analytics" type="checkbox"> <label for="gdpr-analytics">Analytical</label> <input id="gdpr-marketing" name="gdpr-marketing" type="checkbox"> <label for="gdpr-marketing">Marketing</label><p class="cookie-popup__save-wrapper"><button type="submit" class="cookie-popup__save">Save</button></p></form><span class="cookie-popup-label">Cookie Policy</span></div><script>(function() {
+        }
+    </script>
+
+
+        <div class="cookie-popup js-cookie-popup  cookie-popup--uses-badge">
+            <h2>This website uses cookies</h2>
+
+            <p>
+                Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality.
+                <a href="#not-specified">More details...</a>
+            </p>
+            
+            <form>
+                
+                <input
+                    id="gdpr-necessary"
+                    name="gdpr-necessary"
+                    checked="checked"
+                    disabled="disabled"
+                    type="checkbox">
+                <label for="gdpr-necessary">
+                    Required
+                </label>
+            <input
+                id="gdpr-functions"
+                name="gdpr-functions"
+                
+                type="checkbox">
+            <label for="gdpr-functions">
+                Functionality
+            </label>
+            <input
+                id="gdpr-analytics"
+                name="gdpr-analytics"
+                
+                type="checkbox">
+            <label for="gdpr-analytics">
+                Analytical
+            </label>
+            <input
+                id="gdpr-marketing"
+                name="gdpr-marketing"
+                
+                type="checkbox">
+            <label for="gdpr-marketing">
+                Marketing
+            </label>
+
+                <p class="cookie-popup__save-wrapper">
+                    <button type="submit" class="cookie-popup__save">
+                        Save
+                    </button>
+                </p>
+            </form>
+
+            <span class="cookie-popup-label">Cookie Policy</span>
+        </div>
+        <script>
+            (function() {
                 function addScript (src, inline) {
                     var newScript = document.createElement('script');
 
@@ -588,4 +1030,7 @@ export default {
                         }
                     }
                 }
-            })();</script></body></html>
+            })();
+        </script>
+</body>
+</html>

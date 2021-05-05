@@ -1,4 +1,222 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Recommend products using Cloud SQL and SparkML - jaumecloquellcapo</title><meta name="description" content="In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library. What we are goint to do?: First, let’s see&hellip;"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html"><link rel="amphtml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/amp/recommend-products-using-cloud-sql-and-sparkml.html"><link rel="alternate" type="application/atom+xml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.xml"><link rel="alternate" type="application/json" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.json"><meta property="og:title" content="Recommend products using Cloud SQL and SparkML"><meta property="og:site_name" content="jaumecloquellcapo"><meta property="og:description" content="In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library. What we are goint to do?: First, let’s see&hellip;"><meta property="og:url" content="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html"><meta property="og:type" content="article"><link rel="shortcut icon" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/favicon.ico" type="image/x-icon"><style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--logo-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--menu-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}</style><link rel="stylesheet" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/css/style.css?v=47f8a4f068382085929af7e1db2c0ae5"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html"},"headline":"Recommend products using Cloud SQL and SparkML","datePublished":"2019-12-07T03:42","dateModified":"2019-12-07T21:36","description":"In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library. What we are goint to do?: First, let’s see&hellip;","author":{"@type":"Person","name":"jaume cloquell capo"},"publisher":{"@type":"Organization","name":"jaume cloquell capo"}}</script></head><body><div class="site-container"><header class="top" id="js-header"><a class="logo" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/">jaumecloquellcapo</a><nav class="navbar js-navbar"><button class="navbar__toggle js-toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/" title="https://jaumecloquellcapo.github.io/jaumeCloquellCapo.github.io/" target="_self">Home</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/" target="_self">JS</a></li><li class="has-submenu"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/machine-learning/" target="_self" aria-haspopup="true">AI</a><ul class="navbar__submenu level-2" aria-hidden="true"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/abm/" target="_self">ABM</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/nlp/" target="_self">NLP</a></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/geneticalgorithms/" target="_self">Genetic Algorithms</a></li></ul></li><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/golang/" target="_self">Golang</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/search.html" class="search__form"><input class="search__input js-search-input" type="search" name="q" placeholder="search..." aria-label="search..." autofocus="autofocus"></form><button class="search__close js-search-close" aria-label="Close">Close</button></div></div><button class="search__btn js-search-btn" aria-label="Search"><svg role="presentation" focusable="false"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#search"/></svg></button></div></header><main><article class="post"><div class="hero"><figure class="hero__image hero__image--overlay"><img src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix.jpg" srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xs.jpg 300w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-sm.jpg 480w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-md.jpg 768w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-lg.jpg 1024w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xl.jpg 1360w, https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" alt=""></figure><header class="hero__content"><div class="wrapper"><div class="post__meta"><time datetime="2019-12-07T03:42">December 7, 2019</time></div><h1>Recommend products using Cloud SQL and SparkML</h1><div class="post__meta post__meta--author"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="feed__author invert">jaume cloquell capo</a></div></div></header></div><div class="wrapper post__entry"><p>In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library.</p><p>What we are goint to do?:</p><ul><li>Create Cloud SQL instance</li><li>Create database tables by importing .sql files from Cloud Storage</li><li>Populate the tables by importing .csv files from Cloud Storage</li><li>Allow access to Cloud SQL</li><li>Explore the rentals data using SQL statements from CloudShell</li><li>Lauch Dataproc and load ML Models</li><li>Explore results</li><li>Clean UP</li></ul><h2>Create a Goole Cloud SQL instance</h2><p>First, let’s see how GCP dashboard look like at <a href="https://console.cloud.google.com/home/dashboard" class="da by gy gz ha hb" target="_blank" rel="nofollow noopener noreferrer">this url</a> and you will see something like this: On the GCP Console, from the Storage tab, click on “SQL”, and create an instance.</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_67.jpg" data-is-external-image="true" alt="image"></p><p>Select the MySQL instance.</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_68.jpg" data-is-external-image="true" alt="image"></p><p>Set the instance name to <code class="language-plaintext highlighter-rouge">rentals</code> and define a password (make sure to remember it) :</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_69.jpg" data-is-external-image="true" alt="image"></p><p>Allocate 2 vCPUs to your Master and Nodes.</p><p>The instance will then start :</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_70.jpg" data-is-external-image="true" alt="image"></p><p>You’ll have to wait a few minutes in order for the instance to be ready. Once ready, click on the name of the instance to access instance details. The Cloud SQL dashboard is split into multiple tabs:</p><ul><li><strong>Overview</strong>: This is the home tab of our SQL database. The first visible component is a chart of our db's performance over time, where we can set the metric to whatever we want (pictured as "CPU utilization"). This tab is also where we can easily find connection details to our database, or even connect to the database directly using Google's "Cloud Shell" terminal.</li><li><strong>Users</strong>: Manage the database users on this instance.</li><li><strong>Databases</strong>: Create or delete top-level databases in this instance.</li><li><strong>Backups</strong>: Either schedule automated backups, or create an ad-hoc backup on the spot.</li><li><strong>Replicas</strong>: Replicate data in this Cloud SQL instance to other Cloud SQL databases, or an external database.</li><li><strong>Operations</strong>: Log of high-level database operations, such as backups.</li></ul><h2>Create tables</h2><p id="3b79" class="gc gd ed at ge b gf hq gh hr gj hs gl ht gn hu gp" data-selectable-paragraph="">You just need to connect to the CloudSQL and use your standard query SQL to create new database, new table etc. But some people might have difficulty to connect with CloudSQL database. Well, at least for me I froze for 2 whole minutes before I figure out there is a button to connect to it. There are 2 methods that I have tried to connect which are using Google Cloud Shell and by giving authorization to my network. There are other method like using SSL to connect but I will not cover that in this article since I haven’t tried it yet.</p><p id="1256" class="gc gd ed at ge b gf gg gh gi gj gk gl gm gn go gp" data-selectable-paragraph="">To connect using Google Cloud Shell you just need to open your CloudSQL dashboard, click on the Instance ID that you just create and click on “Connect using cloud shell”. </p><p data-selectable-paragraph=""><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_71.jpg" data-is-external-image="true" alt="image"></p><p data-selectable-paragraph="">After you click that button, it will open google cloud shell and you need to press Enter to run the command there. As usual when you press enter, you might need to wait for several minutes for google to whitelist your IP. After that you can type your MySQL password to login into your MySQL database.</p><p data-selectable-paragraph=""><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_72.jpg" data-is-external-image="true" alt="image"> </p><p>A SQL shell is now ready. You can type SQL queries. Start for example with :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SHOW DATABASES;</code></pre></div></div><p>It should the structure of the existing database. We will then create 3 tables :</p><ul><li>A Recommendation table that attache recommendation to a user I</li><li>An Accommodation table that describes the accommodation</li><li>A Rating table that describes the rating of each accommodation</li></ul><p>To create the tables, run the following query :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE DATABASE IF NOT EXISTS recommendation_spark;
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Recommend products using Cloud SQL and SparkML - jaumecloquellcapo </title>
+        <meta name="description" content="In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library. What we are goint to do?: First, let’s see&hellip;" />
+         
+        <meta name="generator" content="Publii Open-Source CMS for Static Site" />
+        <link rel="canonical" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html">
+        
+        <link rel="alternate" type="application/atom+xml" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.xml" />
+<link rel="alternate" type="application/json" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/feed.json" />
+
+        <meta property="og:title" content="Recommend products using Cloud SQL and SparkML" /><meta property="og:site_name" content="jaumecloquellcapo" /><meta property="og:description" content="In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library. What we are goint to do?: First, let’s see&hellip;" /><meta property="og:url" content="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html" /><meta property="og:type" content="article" />
+	        <link rel="shortcut icon" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/favicon.ico" type="image/x-icon" />
+        <style>:root{--body-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--heading-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--logo-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";--menu-font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"}</style>
+        <link rel="stylesheet" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/css/style.css?v=319e095e568825c63a55e23b71420052">
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html"},"headline":"Recommend products using Cloud SQL and SparkML","datePublished":"2019-12-07T03:42","dateModified":"2019-12-07T21:36","description":"In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library. What we are goint to do?: First, let’s see&hellip;","author":{"@type":"Person","name":"jaume cloquell capo"},"publisher":{"@type":"Organization","name":"jaume cloquell capo"}}</script>
+        
+        
+    </head>
+    <body>
+        <div class="site-container">
+   <header class="top" id="js-header">
+      <a class="logo" href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/">
+            jaumecloquellcapo
+      </a>
+            <nav class="navbar js-navbar">
+               <button
+                  class="navbar__toggle js-toggle"
+                  aria-label="Menu"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                  <span class="navbar__toggle-box">
+                     <span class="navbar__toggle-inner">Menu</span>
+                  </span>
+               </button>
+             <ul class="navbar__menu">
+                      <li>
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/"
+                              title="https://jaumecloquellcapo.github.io/jaumeCloquellCapo.github.io/"
+                              target="_self"
+         >
+                           Home
+                       </a>
+         
+                  </li>
+                      <li>
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/js/"
+                              target="_self"
+         >
+                           JS
+                       </a>
+         
+                  </li>
+                      <li class="has-submenu">
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/machine-learning/"
+                              target="_self"
+                              aria-haspopup="true"
+                           >
+                           AI
+                       </a>
+         
+                            <ul class="navbar__submenu level-2" aria-hidden="true" >
+                                     <li>
+                                       <a
+                                          href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/abm/"
+                                             target="_self"
+                        >
+                                          ABM
+                                      </a>
+                        
+                                 </li>
+                                     <li>
+                                       <a
+                                          href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/nlp/"
+                                             target="_self"
+                        >
+                                          NLP
+                                      </a>
+                        
+                                 </li>
+                                     <li>
+                                       <a
+                                          href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/geneticalgorithms/"
+                                             target="_self"
+                        >
+                                          Genetic Algorithms
+                                      </a>
+                        
+                                 </li>
+                            </ul>
+                  </li>
+                      <li>
+                        <a
+                           href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/golang/"
+                              target="_self"
+         >
+                           Golang
+                       </a>
+         
+                  </li>
+             </ul>
+            </nav>
+         <div class="search">
+            <div class="search__overlay js-search-overlay">
+               <div class="search__overlay-inner">
+                  <form action="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/search.html" class="search__form">
+                     <input
+                        class="search__input js-search-input"
+                        type="search"
+                        name="q"
+                        placeholder="search..." 
+                        aria-label="search..."
+                        autofocus="autofocus"/>
+                  </form>
+                  <button class="search__close js-search-close" aria-label="Close">
+                     Close
+                  </button>
+               </div>
+            </div>
+            <button class="search__btn js-search-btn" aria-label="Search">
+               <svg role="presentation" focusable="false">
+                  <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#search"/>
+               </svg>
+            </button>
+         </div>
+   </header>
+<main>
+      <article class="post">
+         <div class="hero">
+             
+                     <figure class="hero__image hero__image--overlay">
+                         
+                        <img
+                           src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix.jpg"
+                               srcset="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xs.jpg 300w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-sm.jpg 480w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-md.jpg 768w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-lg.jpg 1024w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-xl.jpg 1360w ,https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/media/website/responsive/82-820639_big-dark-mountain-hd-wallpaper-1920x1280p-martin-garrix-2xl.jpg 1600w"   sizes="(max-width: 1600px) 100vw, 1600px" 
+                            loading="eager"
+                           alt="">
+                         
+                         
+                     </figure>
+             
+            <header class="hero__content">
+               <div class="wrapper">
+                     <div class="post__meta">
+                        <time datetime="2019-12-07T03:42">
+                              December 7, 2019
+                        </time>
+                     </div>
+                  <h1>
+                     Recommend products using Cloud SQL and SparkML
+                  </h1>
+                     <div class="post__meta post__meta--author">
+                           <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="feed__author invert">jaume cloquell capo</a>
+                     </div>
+               </div>
+            </header>
+         </div>
+
+         <div class="wrapper post__entry">           
+            <p>In this post, we suppose that we have an existing on-premise architecture for housing rental recommendation. Our objective will be to migrate this infrastructure to Google Cloud Platform (GPC). Machine Learning is done using PySpark SparkML library.</p>
+<p>What we are goint to do?:</p>
+<ul>
+<li>Create Cloud SQL instance</li>
+<li>Create database tables by importing .sql files from Cloud Storage</li>
+<li>Populate the tables by importing .csv files from Cloud Storage</li>
+<li>Allow access to Cloud SQL</li>
+<li>Explore the rentals data using SQL statements from CloudShell</li>
+<li>Lauch Dataproc and load ML Models</li>
+<li>Explore results</li>
+<li>Clean UP</li>
+</ul>
+<h2>Create a Goole Cloud SQL instance</h2>
+<p>First, let’s see how GCP dashboard look like at <a href="https://console.cloud.google.com/home/dashboard" class="da by gy gz ha hb" target="_blank" rel="nofollow noopener noreferrer">this url</a> and you will see something like this: On the GCP Console, from the Storage tab, click on “SQL”, and create an instance.</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_67.jpg" data-is-external-image="true"  alt="image"></p>
+<p>Select the MySQL instance.</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_68.jpg" data-is-external-image="true"  alt="image"></p>
+<p>Set the instance name to <code class="language-plaintext highlighter-rouge">rentals</code> and define a password (make sure to remember it) :</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_69.jpg" data-is-external-image="true"  alt="image"></p>
+<p>Allocate 2 vCPUs to your Master and Nodes.</p>
+<p>The instance will then start :</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_70.jpg" data-is-external-image="true"  alt="image"></p>
+<p>You’ll have to wait a few minutes in order for the instance to be ready. Once ready, click on the name of the instance to access instance details. The Cloud SQL dashboard is split into multiple tabs:</p>
+<ul>
+<li><strong>Overview</strong>: This is the home tab of our SQL database. The first visible component is a chart of our db's performance over time, where we can set the metric to whatever we want (pictured as "CPU utilization"). This tab is also where we can easily find connection details to our database, or even connect to the database directly using Google's "Cloud Shell" terminal.</li>
+<li><strong>Users</strong>: Manage the database users on this instance.</li>
+<li><strong>Databases</strong>: Create or delete top-level databases in this instance.</li>
+<li><strong>Backups</strong>: Either schedule automated backups, or create an ad-hoc backup on the spot.</li>
+<li><strong>Replicas</strong>: Replicate data in this Cloud SQL instance to other Cloud SQL databases, or an external database.</li>
+<li><strong>Operations</strong>: Log of high-level database operations, such as backups.</li>
+</ul>
+<h2>Create tables</h2>
+<p id="3b79" class="gc gd ed at ge b gf hq gh hr gj hs gl ht gn hu gp" data-selectable-paragraph="">You just need to connect to the CloudSQL and use your standard query SQL to create new database, new table etc. But some people might have difficulty to connect with CloudSQL database. Well, at least for me I froze for 2 whole minutes before I figure out there is a button to connect to it. There are 2 methods that I have tried to connect which are using Google Cloud Shell and by giving authorization to my network. There are other method like using SSL to connect but I will not cover that in this article since I haven’t tried it yet.</p>
+<p id="1256" class="gc gd ed at ge b gf gg gh gi gj gk gl gm gn go gp" data-selectable-paragraph="">To connect using Google Cloud Shell you just need to open your CloudSQL dashboard, click on the Instance ID that you just create and click on “Connect using cloud shell”. </p>
+<p data-selectable-paragraph=""><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_71.jpg" data-is-external-image="true"  alt="image"></p>
+<p data-selectable-paragraph="">After you click that button, it will open google cloud shell and you need to press Enter to run the command there. As usual when you press enter, you might need to wait for several minutes for google to whitelist your IP. After that you can type your MySQL password to login into your MySQL database.</p>
+<p data-selectable-paragraph=""><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_72.jpg" data-is-external-image="true"  alt="image"> </p>
+<p>A SQL shell is now ready. You can type SQL queries. Start for example with :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>SHOW DATABASES;</code></pre>
+</div>
+</div>
+<p>It should the structure of the existing database. We will then create 3 tables :</p>
+<ul>
+<li>A Recommendation table that attache recommendation to a user I</li>
+<li>An Accommodation table that describes the accommodation</li>
+<li>A Rating table that describes the rating of each accommodation</li>
+</ul>
+<p>To create the tables, run the following query :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>CREATE DATABASE IF NOT EXISTS recommendation_spark;
 
 USE recommendation_spark;
 
@@ -39,7 +257,13 @@ CREATE TABLE  IF NOT EXISTS Recommendation
 );
 
 SHOW DATABASES;
-</code></pre></div></div><p>We will use the <code class="language-plaintext highlighter-rouge">recommendation_spark</code> table :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>MySQL [recommendation_spark]&gt; USE recommendation_spark;
+</code></pre>
+</div>
+</div>
+<p>We will use the <code class="language-plaintext highlighter-rouge">recommendation_spark</code> table :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>MySQL [recommendation_spark]&gt; USE recommendation_spark;
 Database changed
 MySQL [recommendation_spark]&gt; SHOW TABLES;
 +--------------------------------+
@@ -51,7 +275,22 @@ MySQL [recommendation_spark]&gt; SHOW TABLES;
 +--------------------------------+
 3 rows in set (0.11 sec)
 MySQL [recommendation_spark]&gt;
-</code></pre></div></div><h2 id="store-data-in-google-cloud-storage">Store data in Google Cloud Storage</h2><p>Alright, how do we import data in those tables then? There are 2 options, either through the UI or through the command lines.  I will explain the two options though i used commands lines</p><p>First, let’s see how GCP dashboard look like at <a href="https://console.cloud.google.com/home/dashboard" class="da by gy gz ha hb" target="_blank" rel="nofollow noopener noreferrer">this url</a> and you will see something like this: </p><figure class="post__image post__image--center"><img loading="lazy" src="https://miro.medium.com/max/1440/1*xOw_TG_ficYxth84sNUL7Q.png" data-is-external-image="true" width="1440" height="775"></figure><p id="4fef" class="gc gd ed at ge b gf gg gh gi gj gk gl gm gn go gp" data-selectable-paragraph="">On the left bar you can see all the services that google provides you. For now let’s choose storage and click “Browser”. By the way, you could pin the storage button, so it will be displayed on top the next time you open the dashboard. This feature is definitely a big help for someone like me who is too lazy to scroll down and somehow still can’t find the menu I’m looking for.</p><p id="a173" class="gc gd ed at ge b gf gg gh gi gj gk gl gm gn go gp" data-selectable-paragraph="">After that, we will need to create new bucket for our google storage by clicking “CREATE BUCKET” on the interface as illustrated below:</p><figure class="post__image post__image--center"><img loading="lazy" src="https://miro.medium.com/max/1440/1*R7KrmslMeR1GaMKkoR6oRw.png" data-is-external-image="true" width="1440" height="777"></figure><p>Then, just fill the form depends on what you need and finally click create. At this step, you might need to wait for several minutes for GCP to create your bucket. In case you doesn’t know what bucket is, you can imagine it like a your local storage partition and the process that we’re doing now is just creating new partition in our cloud storage.</p><p>After you create a bucket, you can upload and download to google storage using the console.</p><p>If yout "pro terminal" here, we will use the command lines. Open a new tab in the Shell and type the following command :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "Creating bucket: gs://$DEVSHELL_PROJECT_ID"
+</code></pre>
+</div>
+</div>
+<h2 id="store-data-in-google-cloud-storage">Store data in Google Cloud Storage</h2>
+<p>Alright, how do we import data in those tables then? There are 2 options, either through the UI or through the command lines.  I will explain the two options though i used commands lines</p>
+<p>First, let’s see how GCP dashboard look like at <a href="https://console.cloud.google.com/home/dashboard" class="da by gy gz ha hb" target="_blank" rel="nofollow noopener noreferrer">this url</a> and you will see something like this: </p>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://miro.medium.com/max/1440/1*xOw_TG_ficYxth84sNUL7Q.png" data-is-external-image="true"  width="1440" height="775"></figure>
+<p id="4fef" class="gc gd ed at ge b gf gg gh gi gj gk gl gm gn go gp" data-selectable-paragraph="">On the left bar you can see all the services that google provides you. For now let’s choose storage and click “Browser”. By the way, you could pin the storage button, so it will be displayed on top the next time you open the dashboard. This feature is definitely a big help for someone like me who is too lazy to scroll down and somehow still can’t find the menu I’m looking for.</p>
+<p id="a173" class="gc gd ed at ge b gf gg gh gi gj gk gl gm gn go gp" data-selectable-paragraph="">After that, we will need to create new bucket for our google storage by clicking “CREATE BUCKET” on the interface as illustrated below:</p>
+<figure class="post__image post__image--center"><img loading="lazy"  src="https://miro.medium.com/max/1440/1*R7KrmslMeR1GaMKkoR6oRw.png" data-is-external-image="true"  width="1440" height="777"></figure>
+<p>Then, just fill the form depends on what you need and finally click create. At this step, you might need to wait for several minutes for GCP to create your bucket. In case you doesn’t know what bucket is, you can imagine it like a your local storage partition and the process that we’re doing now is just creating new partition in our cloud storage.</p>
+<p>After you create a bucket, you can upload and download to google storage using the console.</p>
+<p>If yout "pro terminal" here, we will use the command lines. Open a new tab in the Shell and type the following command :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>echo "Creating bucket: gs://$DEVSHELL_PROJECT_ID"
 gsutil mb gs://$DEVSHELL_PROJECT_ID
 
 echo "Copying data to our storage from public dataset"
@@ -63,23 +302,75 @@ gsutil ls gs://$DEVSHELL_PROJECT_ID
 
 echo "View some sample data"
 gsutil cat gs://$DEVSHELL_PROJECT_ID/accommodation.csv
-</code></pre></div></div><p>These lines (using <code class="language-plaintext highlighter-rouge">gsuitl</code>) load the accommodation and rating CSV files. The last line (<code class="language-plaintext highlighter-rouge">gsutil cat</code>) displays the content a preview of the accommodation table.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsutil cat gs://$DEVSHELL_PROJECT_ID/accommodation.csv
+</code></pre>
+</div>
+</div>
+<p>These lines (using <code class="language-plaintext highlighter-rouge">gsuitl</code>) load the accommodation and rating CSV files. The last line (<code class="language-plaintext highlighter-rouge">gsutil cat</code>) displays the content a preview of the accommodation table.</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>gsutil cat gs://$DEVSHELL_PROJECT_ID/accommodation.csv
 1,Comfy Quiet Chalet,Vancouver,50,3,3.1,cottage
 2,Cozy Calm Hut,London,65,2,4.1,cottage
 3,Agreable Calm Place,London,65,4,4.8,house
 4,Colossal Quiet Chateau,Paris,3400,16,2.7,castle
 5,Homy Quiet Shack,Paris,50,1,1.1,cottage
-</code></pre></div></div><h2 id="move-data-from-cloud-storage-to-cloud-sql">Move data from Cloud Storage to Cloud SQL</h2><p>At that point, the data is in Google Cloud Storage. Our tables are however in Cloud SQL. We need to move the files in the SQL tables. From the SQL instance details page, click on “Import” :</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_74.jpg" data-is-external-image="true" alt="image"></p><p>Apply the following procedure for both <code class="language-plaintext highlighter-rouge">accomodation.csv</code> and <code class="language-plaintext highlighter-rouge">rating.csv</code> :</p><ul><li>browse and select the file</li><li>make sure the format is in CSV</li><li>select <code class="language-plaintext highlighter-rouge">recommendation_spark</code> as the database</li><li>give it the names Accomoddation or Rating respectively (or anything else if you changed the names of the tables when you created them)</li></ul><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_74.jpg" data-is-external-image="true" alt="image"></p><h2 id="explore-data-from-cloud-sql">Explore data from Cloud SQL</h2><p>To display the content of the rating tables, go back to the SQL instance name, and connect to the instance using Cloud shell. Wait a bit and type your password. From the Shell, start exploring the data by running SQL queries :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT * FROM Rating
+</code></pre>
+</div>
+</div>
+<h2 id="move-data-from-cloud-storage-to-cloud-sql">Move data from Cloud Storage to Cloud SQL</h2>
+<p>At that point, the data is in Google Cloud Storage. Our tables are however in Cloud SQL. We need to move the files in the SQL tables. From the SQL instance details page, click on “Import” :</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_74.jpg" data-is-external-image="true"  alt="image"></p>
+<p>Apply the following procedure for both <code class="language-plaintext highlighter-rouge">accomodation.csv</code> and <code class="language-plaintext highlighter-rouge">rating.csv</code> :</p>
+<ul>
+<li>browse and select the file</li>
+<li>make sure the format is in CSV</li>
+<li>select <code class="language-plaintext highlighter-rouge">recommendation_spark</code> as the database</li>
+<li>give it the names Accomoddation or Rating respectively (or anything else if you changed the names of the tables when you created them)</li>
+</ul>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_74.jpg" data-is-external-image="true"  alt="image"></p>
+<h2 id="explore-data-from-cloud-sql">Explore data from Cloud SQL</h2>
+<p>To display the content of the rating tables, go back to the SQL instance name, and connect to the instance using Cloud shell. Wait a bit and type your password. From the Shell, start exploring the data by running SQL queries :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>SELECT * FROM Rating
 LIMIT 15;
-</code></pre></div></div><p>We can build SQL queries to see how many ratings we have overall :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT COUNT(*) AS num_ratings 
+</code></pre>
+</div>
+</div>
+<p>We can build SQL queries to see how many ratings we have overall :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>SELECT COUNT(*) AS num_ratings 
 FROM Rating;
-</code></pre></div></div><p>Or find the user that wrote the most ratings :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT userId,
+</code></pre>
+</div>
+</div>
+<p>Or find the user that wrote the most ratings :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>SELECT userId,
 COUNT(rating) AS num_ratings
 FROM Rating 
 GROUP BY userId
 ORDER BY num_ratings DESC;
-</code></pre></div></div><p>We won’t need the SQL shell anymore, you can safely exit :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>exit
-</code></pre></div></div><h2 id="launch-dataproc">Launch Dataproc</h2><p>As discussed in a previous article, we need to allow Cloud Dataproc to connect with Cloud SQL, since the computation and the storage are split.</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_73.jpg" data-is-external-image="true" alt="image"></p><p>You need to create a Cloud Dataproc cluster as we did in the previous lab. Name the cluster <code class="language-plaintext highlighter-rouge">rentals</code>, and leave all settings to their default value.</p><p>We now need to allow Dataproc to access this specific SQL Cluster. You might need to change the CLUSTER, CLOUDSQL, ZONE or NWORKERS variables if you changed something previously. On the shell that is remaining (not the SQL one), execute the following command :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo "Authorizing Cloud Dataproc to connect with Cloud SQL"
+</code></pre>
+</div>
+</div>
+<p>We won’t need the SQL shell anymore, you can safely exit :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>exit
+</code></pre>
+</div>
+</div>
+<h2 id="launch-dataproc">Launch Dataproc</h2>
+<p>As discussed in a previous article, we need to allow Cloud Dataproc to connect with Cloud SQL, since the computation and the storage are split.</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_73.jpg" data-is-external-image="true"  alt="image"></p>
+<p>You need to create a Cloud Dataproc cluster as we did in the previous lab. Name the cluster <code class="language-plaintext highlighter-rouge">rentals</code>, and leave all settings to their default value.</p>
+<p>We now need to allow Dataproc to access this specific SQL Cluster. You might need to change the CLUSTER, CLOUDSQL, ZONE or NWORKERS variables if you changed something previously. On the shell that is remaining (not the SQL one), execute the following command :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>echo "Authorizing Cloud Dataproc to connect with Cloud SQL"
 CLUSTER=rentals
 CLOUDSQL=rentals
 ZONE=us-central1-a
@@ -104,14 +395,63 @@ done
 
 echo "Authorizing [$ips] to access cloudsql=$CLOUDSQL"
 gcloud sql instances patch $CLOUDSQL --authorized-networks $ips
-</code></pre></div></div><h2 id="load-ml-models">Load ML models</h2><p>The ML models are already built in this exercise. We need to load the models (as if they were already built by the Data Science teams). The script is written in PySpark.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsutil cp gs://cloud-training/bdml/v2.0/model/train_and_apply.py train_and_apply.py
-</code></pre></div></div><p>We then need to edit the file :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cloudshell edit train_and_apply.py
-</code></pre></div></div><p>Replace your Cloud SQL IP (most likely your project name), and your password :</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_76.jpg" data-is-external-image="true" alt="image"></p><p>You can save the file and quit the editor.</p><p>Then, copy this file to your Cloud Storage bucket using this Cloud Shell command:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gsutil cp train_and_apply.py gs://$DEVSHELL_PROJECT_ID
-</code></pre></div></div><h2 id="run-jobs-on-dataproc">Run Jobs on DataProc</h2><p>We can now run our ML jobs on Dataproc. On the DataProc Job tab, click on “Submit Job” :</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_77.jpg" data-is-external-image="true" alt="image"></p><p>Change the name of the cluster to <code class="language-plaintext highlighter-rouge">rentals</code>, and the Job type to PySpark. For the main Python file, it should have the following format :</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gs://&lt;bucket-name&gt;/train_and_apply.py
-</code></pre></div></div><p>Where you can replace your bucket name. In my example :</p><p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_78.jpg" data-is-external-image="true" alt="image"></p><p>The job should take around 5 minutes to run.</p><h2 id="explore-results">Explore results rows</h2><p>If you still have your SQL Shell, use it again (launch it as previously).</p><p>We will use the <code class="language-plaintext highlighter-rouge">recommenation_spark</code> table.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>USE recommendation_spark;
+</code></pre>
+</div>
+</div>
+<h2 id="load-ml-models">Load ML models</h2>
+<p>The ML models are already built in this exercise. We need to load the models (as if they were already built by the Data Science teams). The script is written in PySpark.</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>gsutil cp gs://cloud-training/bdml/v2.0/model/train_and_apply.py train_and_apply.py
+</code></pre>
+</div>
+</div>
+<p>We then need to edit the file :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>cloudshell edit train_and_apply.py
+</code></pre>
+</div>
+</div>
+<p>Replace your Cloud SQL IP (most likely your project name), and your password :</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_76.jpg" data-is-external-image="true"  alt="image"></p>
+<p>You can save the file and quit the editor.</p>
+<p>Then, copy this file to your Cloud Storage bucket using this Cloud Shell command:</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>gsutil cp train_and_apply.py gs://$DEVSHELL_PROJECT_ID
+</code></pre>
+</div>
+</div>
+<h2 id="run-jobs-on-dataproc">Run Jobs on DataProc</h2>
+<p>We can now run our ML jobs on Dataproc. On the DataProc Job tab, click on “Submit Job” :</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_77.jpg" data-is-external-image="true"  alt="image"></p>
+<p>Change the name of the cluster to <code class="language-plaintext highlighter-rouge">rentals</code>, and the Job type to PySpark. For the main Python file, it should have the following format :</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>gs://&lt;bucket-name&gt;/train_and_apply.py
+</code></pre>
+</div>
+</div>
+<p>Where you can replace your bucket name. In my example :</p>
+<p><img loading="lazy" src="https://maelfabien.github.io/assets/images/gcp_78.jpg" data-is-external-image="true"  alt="image"></p>
+<p>The job should take around 5 minutes to run.</p>
+<h2 id="explore-results">Explore results rows</h2>
+<p>If you still have your SQL Shell, use it again (launch it as previously).</p>
+<p>We will use the <code class="language-plaintext highlighter-rouge">recommenation_spark</code> table.</p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>USE recommendation_spark;
 
 SELECT COUNT(*) AS count FROM Recommendation;
-</code></pre></div></div><p>For a given user, we retrieve the recommendations in the following way :</p><p> </p><div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT 
+</code></pre>
+</div>
+</div>
+<p>For a given user, we retrieve the recommendations in the following way :</p>
+<p> </p>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<pre class="highlight"><code>SELECT 
     r.userid, 
     r.accoid, 
     r.prediction, 
@@ -124,7 +464,142 @@ SELECT COUNT(*) AS count FROM Recommendation;
 FROM Recommendation as r 
 JOIN Accommodation as a 
 ON r.accoid = a.id 
-WHERE r.userid = 10;</code></pre></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><div class="language-plaintext highlighter-rouge"><div class="highlight"><code>+--------+--------+------------+-------------------------+--------------+-------+-------+--------+---------+ | userid | accoid | prediction | title | location | price | rooms | rating | type | +--------+--------+------------+-------------------------+--------------+-------+-------+--------+---------+ | 10 | 21 | 1.5929456 | Big Peaceful Cabin | Seattle | 80 | 2 | 4.9 | cottage | | 10 | 31 | 1.4377488 | Colossal Private Castle | Buenos Aires | 1400 | 15 | 3.3 | castle | | 10 | 41 | 1.3913738 | Big Calm Manor | Seattle | 800 | 11 | 2.7 | mansion | | 10 | 7 | 1.32196 | Vast Peaceful Fortress | Seattle | 3200 | 24 | 1.9 | castle | | 10 | 2 | 1.3101096 | Cozy Calm Hut | London | 65 | 2 | 4.1 | cottage | +--------+--------+------------+-------------------------+--------------+-------+-------+--------+---------+<br><br>These are the five accommodations that we would recommend to her. Note that the quality of the recommendations are not great because our dataset was so small (note that the predicted ratings are not very high). Still, this codelab illustrates the process you'd go through to create product recommendations.<br><br><br></code></div><div class="highlight"><div class="instructions style-scope google-codelab-step"><div class="inner style-scope google-codelab-step"><h2 id="title" class="style-scope google-codelab-step"><span class="style-scope google-codelab-step">Clean up</span></h2><p>We will not use CloudSQL and Dataproc any more in this course, so clean up so as to avoid wasting those computational resources:</p><p>In GCP console, navigate to Cloud SQL, click on the hyperlink corresponding to the rentals instance and click on Delete in the top menu bar. After in GCP console, navigate to Dataproc, click on the checkbox corresponding to cluster-1 and click on Delete in the top menu bar.</p></div></div></div></div></div></div></div><footer class="wrapper post__footer"><p class="post__last-updated">This article was updated on December 7, 2019</p><ul class="post__tag"><li><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/road-to-google-cloud-platform-certification/">Road to Google Cloud Platform Certification</a></li></ul><div class="post__share"><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2FjaumeCloquellCapo.github.io%2FjaumeCloquellCapo.github.io%2Frecommend-products-using-cloud-sql-and-sparkml.html&amp;title=Recommend%20products%20using%20Cloud%20SQL%20and%20SparkML" class="js-share linkedin" rel="nofollow noopener noreferrer"><svg class="icon" aria-hidden="true" focusable="false"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/></svg> <span>LinkedIn</span></a></div><div class="post__bio bio"><div class="bio__info"><h3 class="bio__name"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="invert" rel="author">jaume cloquell capo</a></h3></div></div></footer></article><nav class="post__nav"><div class="post__nav-inner"><div class="post__nav-prev"><svg width="1.041em" height="0.416em" aria-hidden="true"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-prev"/></svg> <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/from-zero-to-an-apache-spark-job.html" class="invert post__nav-link" rel="prev"><span>Previous</span> Running a Apache Spark job on Cloud DataProc</a></div><div class="post__nav-next"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/sistemas-complejos-y-redes-sociales.html" class="invert post__nav-link" rel="next"><span>Next</span> Sistemas Complejos y Redes Sociales. </a><svg width="1.041em" height="0.416em" aria-hidden="true"><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-next"/></svg></div></div></nav><div class="post__related related"><div class="wrapper"><h2 class="h5 related__title">You should also read:</h2><article class="related__item"><div class="feed__meta"><time datetime="2019-12-07T02:44" class="feed__date">December 7, 2019</time></div><h3 class="h1"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/from-zero-to-an-apache-spark-job.html" class="invert">Running a Apache Spark job on Cloud DataProc</a></h3></article><article class="related__item"><div class="feed__meta"><time datetime="2019-12-07T02:14" class="feed__date">December 7, 2019</time></div><h3 class="h1"><a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommendation-systems-in-gcp-week-1-module-2.html" class="invert">Recommendation Systems in GCP</a></h3></article></div></div><div class="post__comments"><div class="wrapper"><h2 class="h5">Comments</h2><div id="disqus_thread"></div><script>var disqus_config = function () {
+WHERE r.userid = 10;</code></pre>
+</div>
+</div>
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight">
+<div class="language-plaintext highlighter-rouge">
+<div class="highlight"><code>+--------+--------+------------+-------------------------+--------------+-------+-------+--------+---------+
+| userid | accoid | prediction | title                   | location     | price | rooms | rating | type    |
++--------+--------+------------+-------------------------+--------------+-------+-------+--------+---------+
+| 10     | 21     |  1.5929456 | Big Peaceful Cabin      | Seattle      |    80 |     2 |    4.9 | cottage |
+| 10     | 31     |  1.4377488 | Colossal Private Castle | Buenos Aires |  1400 |    15 |    3.3 | castle  |
+| 10     | 41     |  1.3913738 | Big Calm Manor          | Seattle      |   800 |    11 |    2.7 | mansion |
+| 10     | 7      |    1.32196 | Vast Peaceful Fortress  | Seattle      |  3200 |    24 |    1.9 | castle  |
+| 10     | 2      |  1.3101096 | Cozy Calm Hut           | London       |    65 |     2 |    4.1 | cottage |
++--------+--------+------------+-------------------------+--------------+-------+-------+--------+---------+<br><br>These are the five accommodations that we would recommend to her. Note that the quality of the recommendations are not great because our dataset was so small (note that the predicted ratings are not very high). Still, this codelab illustrates the process you'd go through to create product recommendations.<br><br><br>
+</code></div>
+<div class="highlight">
+<div class="instructions style-scope google-codelab-step">
+<div class="inner style-scope google-codelab-step">
+<h2 id="title" class="style-scope google-codelab-step"><span class="style-scope google-codelab-step">Clean up</span></h2>
+<p>We will not use CloudSQL and Dataproc any more in this course, so clean up so as to avoid wasting those computational resources:</p>
+<p>In GCP console, navigate to Cloud SQL, click on the hyperlink corresponding to the rentals instance and click on Delete in the top menu bar. After in GCP console, navigate to Dataproc, click on the checkbox corresponding to cluster-1 and click on Delete in the top menu bar.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>            
+         </div>
+
+            <footer class="wrapper post__footer">
+
+                     <p class="post__last-updated">
+                        This article was updated on
+                           December 7, 2019
+                     </p>
+
+                     <ul class="post__tag">
+                           <li>
+                              <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/road-to-google-cloud-platform-certification/">Road to Google Cloud Platform Certification</a>
+                           </li>
+                     </ul>
+
+                  <div class="post__share">
+                     
+                     
+                     
+                     
+                        <a
+                           href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2FjaumeCloquellCapo.github.io%2FjaumeCloquellCapo.github.io%2Frecommend-products-using-cloud-sql-and-sparkml.html&amp;title=Recommend%20products%20using%20Cloud%20SQL%20and%20SparkML"
+                           class="js-share linkedin"
+                           rel="nofollow noopener noreferrer">
+                           <svg class="icon" aria-hidden="true" focusable="false">
+                              <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/>
+                           </svg>
+                           <span>LinkedIn</span>
+                        </a>
+                     
+                     
+                  </div>
+
+                  <div class="post__bio bio">
+                        <div class="bio__info">
+                           <h3 class="bio__name">
+                              <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/authors/jaume-cloquell-capo/" class="invert" rel="author">jaume cloquell capo</a>
+                           </h3>
+
+                        </div>
+                  </div>
+            </footer>
+      </article>
+
+            <nav class="post__nav">
+               <div class="post__nav-inner">
+                     <div class="post__nav-prev">
+                        <svg width="1.041em" height="0.416em" aria-hidden="true">
+                           <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-prev"/>
+                        </svg>
+
+                        <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/from-zero-to-an-apache-spark-job.html" class="invert post__nav-link" rel="prev">
+                           <span>Previous</span>
+                           Running a Apache Spark job on Cloud DataProc
+                        </a>
+                     </div>
+                     <div class="post__nav-next">
+                        <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/sistemas-complejos-y-redes-sociales.html" class="invert post__nav-link" rel="next">
+                           <span>Next</span>
+                           Sistemas Complejos y Redes Sociales.
+                        </a>
+                        <svg width="1.041em" height="0.416em" aria-hidden="true">
+                           <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#arrow-next"/>
+                        </svg>
+                     </div>
+               </div>
+            </nav>
+
+            <div class="post__related related">
+               <div class="wrapper">
+                  <h2 class="h5 related__title">
+                     You should also read:
+                  </h2>
+                     <article class="related__item">
+                        <div class="feed__meta">
+                           <time datetime="2019-12-07T02:44" class="feed__date">
+                                 December 7, 2019
+                           </time>
+                        </div>
+                        <h3 class="h1">
+                           <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/from-zero-to-an-apache-spark-job.html" class="invert">
+                              Running a Apache Spark job on Cloud DataProc
+                           </a>
+                        </h3>
+                     </article>
+                     <article class="related__item">
+                        <div class="feed__meta">
+                           <time datetime="2019-12-07T02:14" class="feed__date">
+                                 December 7, 2019
+                           </time>
+                        </div>
+                        <h3 class="h1">
+                           <a href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommendation-systems-in-gcp-week-1-module-2.html" class="invert">
+                              Recommendation Systems in GCP
+                           </a>
+                        </h3>
+                     </article>
+               </div>
+            </div>
+
+         <div class="post__comments">
+            <div class="wrapper">
+               <h2 class="h5">
+                  Comments
+               </h2>
+               <div id="disqus_thread"></div>
+               <script>
+                   var disqus_config = function () {
                        this.page.url = 'https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/recommend-products-using-cloud-sql-and-sparkml.html';
                		this.page.identifier = '4';
                    };
@@ -154,14 +629,47 @@ WHERE r.userid = 10;</code></pre></div></div><div class="language-plaintext high
                
                    window.onscroll = function() {
                        publiiLoadDisqus();
-                   };</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noreferrer">comments powered by Disqus.</a></noscript></div></div></main><footer class="footer"><div class="footer__social"><a href="https://www.linkedin.com/in/jaume-cloquell-119765b7" aria-label="LinkedIn"><svg><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/></svg></a></div><div class="footer__copyright"><p>jaume cloquell capo</p></div><button class="footer__bttop js-footer__bttop" aria-label="Back to top"><svg><title>Back to top</title><use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#toparrow"/></svg></button></footer></div><script>window.publiiThemeMenuConfig = {    
+                   };
+               </script>
+               <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" target="_blank" rel="nofollow noopener noreferrer">comments powered by Disqus.</a></noscript>
+            </div>
+         </div>
+
+
+</main>
+<footer class="footer">
+        <div class="footer__social">
+                <a href="https://www.linkedin.com/in/jaume-cloquell-119765b7" aria-label="LinkedIn">
+                    <svg>
+                        <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#linkedin"/>
+                    </svg>
+                </a>
+        </div>
+        <div class="footer__copyright">
+            <p>jaume cloquell capo</p>
+        </div>
+       <button class="footer__bttop js-footer__bttop" aria-label="Back to top"> 
+           <svg>
+               <title>Back to top</title>
+               <use xlink:href="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/svg/svg-map.svg#toparrow" />
+           </svg>
+       </button>   
+</footer>
+</div>
+
+<script>
+   window.publiiThemeMenuConfig = {    
         mobileMenuMode: 'overlay',
         animationSpeed: 300,
         submenuWidth: 'auto',
         doubleClickTime: 500,
         mobileMenuExpandableSubmenus: true, 
         relatedContainerForOverlayMenuSelector: '.top',
-   };</script><script defer="defer" src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/js/scripts.min.js?v=f4c4d35432d0e17d212f2fae4e0f8247"></script><script>var images = document.querySelectorAll('img[loading]');
+   };
+</script>
+<script defer src="https://jaumeCloquellCapo.github.io/jaumeCloquellCapo.github.io/assets/js/scripts.min.js?v=f4c4d35432d0e17d212f2fae4e0f8247"></script>
+    <script>        
+        var images = document.querySelectorAll('img[loading]');
 
         for (var i = 0; i < images.length; i++) {
             if (images[i].complete) {
@@ -171,7 +679,65 @@ WHERE r.userid = 10;</code></pre></div></div><div class="language-plaintext high
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script><div class="cookie-popup js-cookie-popup cookie-popup--uses-badge"><h2>This website uses cookies</h2><p>Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality. <a href="#not-specified">More details...</a></p><form><input id="gdpr-necessary" name="gdpr-necessary" checked="checked" disabled="disabled" type="checkbox"> <label for="gdpr-necessary">Required</label> <input id="gdpr-functions" name="gdpr-functions" type="checkbox"> <label for="gdpr-functions">Functionality</label> <input id="gdpr-analytics" name="gdpr-analytics" type="checkbox"> <label for="gdpr-analytics">Analytical</label> <input id="gdpr-marketing" name="gdpr-marketing" type="checkbox"> <label for="gdpr-marketing">Marketing</label><p class="cookie-popup__save-wrapper"><button type="submit" class="cookie-popup__save">Save</button></p></form><span class="cookie-popup-label">Cookie Policy</span></div><script>(function() {
+        }
+    </script>
+
+
+        <div class="cookie-popup js-cookie-popup  cookie-popup--uses-badge">
+            <h2>This website uses cookies</h2>
+
+            <p>
+                Select which cookies to opt-in to via the checkboxes below; our website uses cookies to examine site traffic and user activity while on our site, for marketing, and to provide social media functionality.
+                <a href="#not-specified">More details...</a>
+            </p>
+            
+            <form>
+                
+                <input
+                    id="gdpr-necessary"
+                    name="gdpr-necessary"
+                    checked="checked"
+                    disabled="disabled"
+                    type="checkbox">
+                <label for="gdpr-necessary">
+                    Required
+                </label>
+            <input
+                id="gdpr-functions"
+                name="gdpr-functions"
+                
+                type="checkbox">
+            <label for="gdpr-functions">
+                Functionality
+            </label>
+            <input
+                id="gdpr-analytics"
+                name="gdpr-analytics"
+                
+                type="checkbox">
+            <label for="gdpr-analytics">
+                Analytical
+            </label>
+            <input
+                id="gdpr-marketing"
+                name="gdpr-marketing"
+                
+                type="checkbox">
+            <label for="gdpr-marketing">
+                Marketing
+            </label>
+
+                <p class="cookie-popup__save-wrapper">
+                    <button type="submit" class="cookie-popup__save">
+                        Save
+                    </button>
+                </p>
+            </form>
+
+            <span class="cookie-popup-label">Cookie Policy</span>
+        </div>
+        <script>
+            (function() {
                 function addScript (src, inline) {
                     var newScript = document.createElement('script');
 
@@ -270,4 +836,7 @@ WHERE r.userid = 10;</code></pre></div></div><div class="language-plaintext high
                         }
                     }
                 }
-            })();</script></body></html>
+            })();
+        </script>
+</body>
+</html>
