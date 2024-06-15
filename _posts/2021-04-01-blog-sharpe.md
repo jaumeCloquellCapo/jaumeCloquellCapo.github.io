@@ -60,7 +60,7 @@ For the development of this optimization model, it is necessary to consider the 
 
 ## Portfolio Optimization Using GA
 
-As we explained in the previous [post](https://jaumecloquellcapo.github.io/jaumeCloquelhttps://jaumecloquellcapo.github.io/2021/03/08/blog-genetic-algorithms.html), an optimization problem is about choosing the values of the decision variables that will optimize the objective function within a solution space. Unlike classical methods of optimization, the genetic algorithm does not choose an initial solution but a set of solutions known as the initial population. Some of the phases of a genetic algorithm are as follows:
+As we explained in the previous [post](https://jaumecloquellcapo.github.io/2021/03/08/blog-genetic-algorithms.html), an optimization problem is about choosing the values of the decision variables that will optimize the objective function within a solution space. Unlike classical methods of optimization, the genetic algorithm does not choose an initial solution but a set of solutions known as the initial population. Some of the phases of a genetic algorithm are as follows:
 
 - Fitting function
 - Selection method
