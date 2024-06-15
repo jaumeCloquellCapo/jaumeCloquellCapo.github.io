@@ -1,42 +1,91 @@
-title: "Jaume Blog"
-author: "jaume cloquell capo"
-description: "Sr. Soft. Engineer" # This will show up in places like twitter, linkedin, etc, if you share your sites url as a post.
+theme: minima
 
-# Email / Social media user names used by the minima theme:
-# All of these are optional and can be removed or commented out
-email: "jaumecloquell@gmail.com"
-#twitter_username: "twitteruser"
-#github_username: "githubuser"
-linkedin_username: "https://www.linkedin.com/in/jaume-cloquell"
-#facebook_username: username
-#flickr_username: username
-#instagram_username: username
-#pinterest_username: username
-#youtube_username: username
-#googleplus_username: +username
+title: Jaume Blog
+author: Jaume Cloquell Capo
+email: jaumecloquell@gmail.net
+# url: https://chadbaldwin.net
 
-#########################################################################################
-######### Nothing below needs to be changed (unless you know what you're doing) #########
-#########################################################################################
-theme: "minima"
+timezone: Etc/UTC # GitHub uses UTC. This is to force dev environment to match
+future: false # GitHub Pages will publish future posts if this isn't set to false
 
+description: >
+  My first blog. Probably no one else will ever read it, but oh well.
+
+# Minima variables
+# twitter_username:  chad_baldwin
+# github_username:   chadbaldwin
+# linkedin_username: chadbaldwin
+#dribbble_username: jekyll
+#facebook_username: jekyll
+#flickr_username: jekyll
+#instagram_username: jekyll
+#pinterest_username: jekyll
+#youtube_username: jekyll
+#googleplus_username: +jekyll
 rss: rss
 
-kramdown:
-  syntax_highlighter_opts:
-    disable: true
-    
+show_excerpts: false
+
+# Used by simple links page
+social-links:
+  # Resume:          https://chadbaldwin.net/resume
+  #LinkedIn:        https://linkedin.com/in/chadbaldwin
+  #StackOverflow:   https://stackoverflow.com/users/3474677
+  #HackerRank:      https://hackerrank.com/chadwin
+  #GitHub:          https://github.com/chadbaldwin
+  #Microsoft Learn: https://learn.microsoft.com/en-us/users/chadbaldwin/transcript/v0ylxf6nq5l8ny8
+  #Twitter:         https://twitter.com/chad_baldwin
+  #Reddit:          https://reddit.com/user/chadbaldwin
+  #Credly:          https://credly.com/users/chadbaldwin
+  #PluralSight:     https://app.pluralsight.com/profile/chadbaldwin
+  #Website:         https://chadbaldwin.net
+
+# plugin: jekyll-seo-tag
+
+# plugin: jekyll-titles-from-headings
+titles_from_headings:
+  strip_title: true
+
+collections:
+  personal: # collection for personal blog posts
+    output: true
+
+header_pages:
+#  - resume.html
+  - archive.html
+#  - books.md
+#  - bookmarks.md
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-titles_from_headings:
-  strip_title: true
-  collections: true
+# google_analytics:
+ # - UA-185058308-1 # Old GA Universal Analytics property
+ # - G-RY6FRPMXHZ # New GA4 property
+
+gravatar_hash: 2136e716a089f4a3794f4007328c7bfb
+code_block_max_height: 500px
+
+home_post_limit: 5
+
+# The github repo that is to be used for looking up comments
+# comments_repo: chadbaldwin/chadbaldwin.github.io
 
 defaults:
   - scope:
       path: ""
-      type: post
     values:
-      tags: Other
+      image: https://media.licdn.com/dms/image/D4D03AQGJaR8kC2Csdw/profile-displayphoto-shrink_200_200/0/1718303472088?e=1723680000&v=beta&t=vhEjrTvVXT5wivO7BBumHPqHaeE0TMIROLo66HO4CT4 # Apply default site image
+  - scope:
+      path: ""
+      type: posts
+    values:
+      tags:
+        - Other # Add a default tag to all posts
+
+# Disable highlighting to use highlightJS instead
+# highlighter: none # Not supported by GitHub Pages
+kramdown:
+  syntax_highlighter_opts:
+    disable: true
