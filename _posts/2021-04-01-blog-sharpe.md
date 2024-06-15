@@ -94,11 +94,11 @@ The objective of the crossing is to generate, from individuals already existing 
 - Uniform crossing: the value that each position of the new individual is obtained from one of the two parents. Usually, the probability of the value coming from each parent is the same, although it could, for example, be conditioned by one's fitness.
 Unlike the previous strategies, with this one, each crossing is generates a single offspring.
 
-![img/ss.png](img/ss.png)
+![img/ss.png](./img/ss.png)
 
 Below, you can see the implementation. The first step consist to extract a copy from one parent to create te new children.  Depens of the configuration, the new children receive one porperty from one parent or another.
 
-![img/sss.png](img/sss.png)
+![img/sss.png](./img/sss.png)
 
 **Mutation method**
 
@@ -268,17 +268,17 @@ absolute among better individuals is not higher than the value of  'stop_tolera
 
 As output of the genetic algorithm can be visualized for each generation, which has been the best combination along with the list of the best weights. We select an investment portfolio formed by Cellnex Telecom, S.A.(MTS.MC) , ArcelorMittal (MTS.MC), Ferrovial, S.A. (FER.MC) and Banco Santander, S.A. (SAN.MC).
 
-![img/ssse.png](img/ssse.png)
+![img/ssse.png](./img/ssse.png)
 
 **Daily prices of the companies for 1 year**
 
 If we select an investment portfolio formed by Cellnex Telecom, S.A.(MTS.MC) , ArcelorMittal (MTS.MC), Ferrovial, S.A. (FER.MC) and Banco Santander, S.A. (SAN.MC). The results are as follows: 0% Telecom and 0,1% ArcelorMittal, 0% Ferrovial and 99% Banco Santander . If we look at the allocations, it makes perfect sense since the strongest company is Santander and it has a much higher return than the rest and therefore should be given more weight to investment. On the other hand, the companies with a negative average are assigned less than 1% of the total weightof the portfolio.
 
-![img/ou.png](img/ou.png)
+![img/ou.png](./img/ou.png)
 
 **Output generate for the softwareRatio value for every portofolio**
 
-![img/res.png](img/res.png)
+![img/res.png](./img/res.png)
 
 ## Bibliography
 
