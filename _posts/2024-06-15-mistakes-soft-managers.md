@@ -1,16 +1,12 @@
 ---
 layout: post
-title: Common Mistakes Development Managers Make
-description: The Distinction Between Testing And Quality Assurance In The Software Industry
-date: 2024-01-01 08:02:44 -0800
-tags: Software
+title: Common mistakes soft. Managers / and Tech Leads make it
+description: Experiences lived from developer perspective and mistakes make as tech lead
+date: 2024-06-15 08:02:44 -0800
+tags: Management Software
 ---
 
-
-# Common Mistakes Development Managers Make
-
-
-## Micromanagement
+## Managing the wrong amount 
 
 Managers must communicate with the team about the business, goals, context, next steps, roadmaps, partners, and more. Little or nothing should be hidden from the team. Soft. Enginyeers can only give their best when they have the project's data.
 
@@ -18,7 +14,7 @@ Comprehensively analyzing a problem and then handing it over to the team for imp
 
 Lack of transparency hinders team efficiency. While it might seem efficient to micromanage every detail, it often creates bottlenecks rather than streamlining processes.
 
-Managers must learn to relinquish control and trust their teams. Micromanaging every aspect isn't feasible or productive; instead, maintaining composure and faith in the team's capabilities yields better results.
+Managers must learn to relinquish control and trust their teams. Micromanaging every aspect isn't feasible or productive instead, manage projects according to the owner’s level of task-relevant maturity.
 
 ## Abuse time Meetings
 
@@ -28,7 +24,7 @@ Teams suffer when meetings disrupt their focus, so it's crucial to minimize unne
 
 Inconsiderate scheduling can significantly affect team morale and output. Booking meetings during peak concentration times like mid-morning or mid-afternoon can derail productivity for the entire day.
 
-## Be part of the team
+## Not be part of the team
 
 Managers who only speak in general terms, buzzwords to impress and mumbo jumbo are alien to the team quotidian. 
 

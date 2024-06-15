@@ -6,29 +6,19 @@ date: 2022-04-01 08:02:44 -0800
 tags: AI
 ---
 
-
-# Portfolio Optimization Based on Sharpe Ratio and Genetic Algorithm
-
 This post shows the application of the theory of genetic algorithms to an optimization problem of a portfolio of shares. Both the optimization problems and the theory of genetic algorithms are exposed briefly and are useful to solve specific problems, to find the best assignment when it is necessary to invest. The exposition of this interesting topic is helped by software that allows seeing the step-by-step optimization process by using genetic algorithms.
 
 For the present post, we use the portfolio selection model of Markowitz (1952), using the performance measurement for mutual fund portfolios proposed by Sharpe (1964), a measure that was originally called reward-to-variability ratio and became popular as Sharpe's index, measure, or ratio. The following are the basic elements of the Markowitz portfolio selection model and the Sharpe ratio as a measure of performance and optimization of the return/risk ratio.
 
-In particular, we're going to cover:
+----
 
-### 
+Table of contents:
 
-- [Introduction](about:blank#mcetoc_1e4h1dsdl7)
-    - [Modern Portfolio Theory](about:blank#mcetoc_1e4h1ddts6)
-    - [Sharpe Ratio](about:blank#mcetoc_1e4f8ehqf1)
-- [Proposed Methodology](about:blank#mcetoc_1e4grpbd33)
-- [Portfolio Optimization Using GA](about:blank#mcetoc_1e4h2fd850)
-    - [Parameterization of the algorithm](about:blank#mcetoc_1e4gr7i3a1)
-    - [Representation](about:blank#mcetoc_1e4h3hqtn0)
-    - [Crossing](about:blank#mcetoc_1e4f92ij72)
-    - [Fitting function](about:blank#mcetoc_1e4fb64sj1)
-    - [Early stop](about:blank#mcetoc_1e4fcn20s0)
-- [Case studies](about:blank#mcetoc_1e4fd036u0)
-- [Bibliography](about:blank#mcetoc_1e44o9k7t0)
+* TOC
+{:toc}
+
+----
+
 
 ## Introduction
 
@@ -49,7 +39,7 @@ However, it is important to consider that Markowitz develops its model based on 
 
 Following portfolio theory, methods and indicators for the evaluation of risk-adjusted performance using the mean-variance criterion appeared, such as the contributions of Treynor (1965), Sharpe (1966), and Jensen (1968), who agreed that the performance of a portfolio, in terms of return and risk, could be evaluated jointly. This post focuses particularly on William Sharpe's approach, since his indicator (Sharpe's ratio) comes from a simplifying model of the Markowitz portfolio selection model, by reducing the number of data required for its use.
 
-### **Sharpe Ratio**
+### Sharpe Ratio
 
 The Sharpe ratio was proposed by William Sharpe, a winner of the Nobel Memorial Prize in Economic Sciences in 1990. The Sharpe ratio is based on the capital asset pricing model, which is one of the basic and significant investment theories. The Sharpe ratio is utilized to measure the performance of a stock; it is a representative index to assess stocks. Choosing and holding the portfolio which has low risk and high return is the purpose of the Sharpe ratio. The formula of the Sharpe ratio is given by the formula where Rf is the risk-free rate of interest. By selecting the higher Sharpe ratio, investors invest in the portfolio which has minimal investment risk with the same amount of return or maximal return with the same investment risk:
 

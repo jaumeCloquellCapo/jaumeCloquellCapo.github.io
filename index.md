@@ -1,1 +1,1 @@
-Software engineer with experience in multiple industries, including Finance, Healthcare, and Logistics. I earned a Master's Degree in Software Engineering and I uses my technical background to deliver high-impact projects for organizations.
+Sr. Software engineer with experience in multiple industries, including Finance, Healthcare, and Logistics. I earned a Master's Degree in Software Engineering and I uses my technical background to deliver high-impact projects for organizations.

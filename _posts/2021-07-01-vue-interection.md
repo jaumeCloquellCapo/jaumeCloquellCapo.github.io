@@ -6,13 +6,20 @@ date: 2021-07-01 08:02:44 -0800
 tags: JS
 ---
 
-# Intersection observer api
-
 Modern web applications use a lot of animations and media ranging from images, gif, videos to SVG’s to make user experience elegant and engaging. If not handled properly, it can hamper your website’s performance, and these things might not work in your favour. To overcome this issue of over-fetching resources, we need to handle the media on our website more sincerely and display them only when necessary, the jargon for which is lazy loading.
 
 Native observers empower your JavaScript to subscribe to events like the alteration of the DOM, an elements position in relation to the viewport and even the resizing of individual elements. Each observer follows a similar pattern to construct and they offload complicated and sometimes tightly coupled functionality to the browser.
 
 In this post, I’ll talk about the intersection and observation process and how they relate to the threshold and browser viewport.. To explain our intersection observer, we will implement a *lazy loading* using Intersection observer in react.
+
+----
+
+Table of contents:
+
+* TOC
+{:toc}
+
+----
 
 ## Get the images by url
 

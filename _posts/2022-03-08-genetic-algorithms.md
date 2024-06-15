@@ -6,12 +6,18 @@ date: 2022-03-08 08:02:44 -0800
 tags: AI
 ---
 
-
-# Introduction to Genetic Algorithms
-
 The genetic algorithm simulates biological evolution in which organisms adapt to their environment by repeating mutation, crossover and selection for many generations. It is commonly used to **find optimal solutions** and applied to various problems, such as the low-air-resistance “Aero Double Wing” design of bullet trains.
 
 The algorithm begins by initializing **a population of individuals** using default or random values. Then, it runs each member of that population through a fitness function. It selects the fittest members of the population to reproduce using a method defined in the **reproduction function**, then repeats the evaluation and reproduction until a desired number of iterations have passed. At termination, the algorithm presents the best member or members of the population according to the fitness function. Let's discuss each of these concepts further. To explain this post we will apply a genetic algorithm that reproduces the text "hellow world".
+
+----
+
+Table of contents:
+
+* TOC
+{:toc}
+
+----
 
 ### Genetic Algorithm Basics
 

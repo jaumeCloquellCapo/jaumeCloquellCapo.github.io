@@ -1,12 +1,10 @@
 ---
 layout: post
-title: Software Testing vs. Quality
-description: The Distinction Between Testing And Quality Assurance In The Software Industry
+title: Software Testing != Quality
+description: The distinction between testing and quality assurance in the software industry
 date: 2023-11-15 08:02:44 -0800
 tags: Software
 ---
-
-# Software Testing vs. Quality
 
 To deliver software products that meet high standards of quality and reliability, software testing and quality assurance are being used as integral components of the software development process. A lot of people think that the cause of low-quality software is insufficient testing. The truth is very different:
 
