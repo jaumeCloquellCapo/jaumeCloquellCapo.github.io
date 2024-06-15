@@ -1,3 +1,11 @@
+---
+layout: post
+title: Intersection observer api
+description: The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document’s viewport..
+date: 2021-07-01 08:02:44 -0800
+tags: T-VUEJS
+---
+
 # Intersection observer api
 
 Modern web applications use a lot of animations and media ranging from images, gif, videos to SVG’s to make user experience elegant and engaging. If not handled properly, it can hamper your website’s performance, and these things might not work in your favour. To overcome this issue of over-fetching resources, we need to handle the media on our website more sincerely and display them only when necessary, the jargon for which is lazy loading.

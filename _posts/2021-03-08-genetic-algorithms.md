@@ -1,3 +1,12 @@
+---
+layout: post
+title: Introduction to Genetic Algorithms
+description: Genetic Algorithm (GA) is a search-based optimization technique based on the principles of Genetics and Natural Selection.
+date: 2021-03-08 08:02:44 -0800
+tags: T-AI
+---
+
+
 # Introduction to Genetic Algorithms
 
 The genetic algorithm simulates biological evolution in which organisms adapt to their environment by repeating mutation, crossover and selection for many generations. It is commonly used to **find optimal solutions** and applied to various problems, such as the low-air-resistance “Aero Double Wing” design of bullet trains.

@@ -1,3 +1,11 @@
+---
+layout: post
+title: Portfolio Optimization Based on Sharpe Ratio and Genetic Algorithm
+description: This post shows the application of the theory of genetic algorithms to an optimization problem of a portfolio of shares.
+date: 2021-04-01 08:02:44 -0800
+tags: T-AI
+---
+
 # Portfolio Optimization Based on Sharpe Ratio and Genetic Algorithm
 
 This post shows the application of the theory of genetic algorithms to an optimization problem of a portfolio of shares. Both the optimization problems and the theory of genetic algorithms are exposed briefly and are useful to solve specific problems, to find the best assignment when it is necessary to invest. The exposition of this interesting topic is helped by software that allows seeing the step-by-step optimization process by using genetic algorithms.
