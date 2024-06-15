@@ -1,1 +1,0 @@
-__NUXT_JSONP__("/", {data:[{}],fetch:[],mutations:[["set",{title:"Awake",subtitle:"A Nuxt.js Theme for Netlify CMS",featureImage:"\u002Fuploads\u002Fhome-hero.jpg"}]]});

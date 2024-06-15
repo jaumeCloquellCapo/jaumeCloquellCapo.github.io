@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1620234542",layout:"default",error:null,state:{pageType:a,title:"Awake",subtitle:"A Nuxt.js Theme for Netlify CMS",featureImage:"\u002Fuploads\u002Fhome-hero.jpg",content:a,author:a,date:a},serverRendered:true,routePath:"\u002F",config:{}}}(""));

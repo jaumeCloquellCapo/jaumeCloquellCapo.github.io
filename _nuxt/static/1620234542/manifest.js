@@ -1,1 +1,0 @@
-__NUXT_JSONP__("manifest.js", {routes:["\u002Fcomments-support","\u002Fcategories\u002Fabout-awake","\u002F","\u002Fgetting-started-with-awake","\u002Flight-css-footprint","\u002Fresourcegrid-vue","\u002Fnewsletter-signup","\u002Fcategories\u002Fthird-party-integrations","\u002Fpost-markup-and-formatting","\u002Fabout","\u002Fcontact","\u002Fbuilt-for-speed","\u002Fcategories"]})
