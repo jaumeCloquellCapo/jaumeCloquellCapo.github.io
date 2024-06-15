@@ -15,7 +15,7 @@
 
 - title: Designing Data-Intensive Applications
   author: Gene Kim
-  summary: \"Designing Data-Intensive Applications is one of the greatest reference books. When I was working on databases at Google I regularly recommended it to coworkers who needed more background on particular distributed systems topics. It will keep being a go-to book as long as I work in this field.\"
+  summary: \"Designing Data-Intensive Applications is one of the greatest reference books. I regularly recommended it to coworkers who needed more background on particular distributed systems topics.\"
   #link: https://amzn.to/3xLNFqX
   rating: ⭐⭐⭐⭐⭐
   completeDate: 2022-07-10
