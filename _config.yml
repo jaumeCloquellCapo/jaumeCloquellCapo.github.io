@@ -53,7 +53,7 @@ collections:
 header_pages:
 #  - resume.html
   - archive.html
-#  - books.md
+  - books.md
 #  - bookmarks.md
 
 plugins:
