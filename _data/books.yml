@@ -8,14 +8,21 @@
 
 - title: Operations Anti-Patterns, DevOps Solutions
   author: Jeffery D. Smith
-  summary: \"Designing Data-Intensive Applications is one of the greatest reference books. When I was working on databases at Google I regularly recommended it to coworkers who needed more background on particular distributed systems topics. It will keep being a go-to book as long as I work in this field."
-  # link: https://amzn.to/3Pqgvmz
+  summary: \"Operations Anti-Patterns, DevOps Solutions shows how to implement DevOps techniques in the kind of imperfect environments most developers work in. Part technology tutorial, part reference manual, and part psychology handbook, this practical guide shows you realistic ways to bring DevOps to your team when you don’t have the flexibility to make sweeping changes in organizational structure.\"
+  link: https://amzn.to/3Pqgvmz
   #startDate: 2022-07-10
   #isCurrent: true # removing isCurrent status - intend to restart book from beginning
 
 - title: Designing Data-Intensive Applications
-  author: Gene Kim
-  summary: \"With The Phoenix Project we learned about the Three Ways. Now with The Unicorn Project, Gene Kim introduces the Five Ideals. This highly anticipated follow-up to the bestselling title The Phoenix Project takes another look at Parts Unlimited, this time from the perspective of software development\"
+  author: Martin Kleppmann 
+  summary: \"Designing Data-Intensive Applications is one of the greatest reference books. When I was working on databases at Google I regularly recommended it to coworkers who needed more background on particular distributed systems topics. It will keep being a go-to book as long as I work in this field.\"
+  # link: https://amzn.to/3xLNFqX
+  rating: ⭐⭐⭐⭐⭐
+  completeDate: 2022-07-10
+
+  - title: Domain-Driven Design: Tackling Complexity in the Heart of Software
+  author: Eric Evans
+  # summary: \"Designing Data-Intensive Applications is one of the greatest reference books. When I was working on databases at Google I regularly recommended it to coworkers who needed more background on particular distributed systems topics. It will keep being a go-to book as long as I work in this field.\"
   # link: https://amzn.to/3xLNFqX
   rating: ⭐⭐⭐⭐⭐
   completeDate: 2022-07-10
