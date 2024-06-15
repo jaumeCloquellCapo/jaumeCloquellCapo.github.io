@@ -18,7 +18,7 @@ In this post, I’ll talk about the intersection and observation process and how
 
 At this point we're going to do a little cheating, since if we were using a conventional REST API, we should get the list of photos and then get the resource associated with the image sprites of each photo. All the sprites are under the same URL:
 
-```
+``` js
 export default async function fetchPhotos () {
     return await Array.apply(null, { length: 150 })
         .map((item, index) => {
@@ -35,7 +35,7 @@ export default async function fetchPhotos () {
 The goal I want to achieve is to avoid loading images that appear below the viewport but, at the same time, to achieve a fluid user experience so that you do not notice that you are doing this downloading of images in delay.The intersection observer allows you to watch when an element intersects with the viewport.
 An intersection observer follows the following pattern to set up: we need to define our observer and a callback function to fire when our conditions are met:
 
-```
+```js
 const observer = new IntersectionObserver(intersectionCallback);
 ```
 
@@ -51,7 +51,7 @@ Now we will select all target elements and observe them.
 
 Finally our callback, which we called `lazyLoadImage` above.
 
-```
+```js
 export default function lazyLoadImage(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {

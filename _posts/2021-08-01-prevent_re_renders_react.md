@@ -46,7 +46,7 @@ We need to tell `useCallback` to create new cached version of `increment` for ev
 
 While `React.memo` is a [higher-order component](https://reactjs.org/docs/higher-order-components.html) as it accepts a component and returns the new/memoized **component**.`React.useMemo` is a [hook](https://reactjs.org/docs/hooks-intro.html)(which is a function). It accepts a function and returns the memoized return value of the function you passed.
 
-```
+```js
 const value = React.useMemo(
 () => computeExpensiveValue(a, b), [a, b]);
 ```
