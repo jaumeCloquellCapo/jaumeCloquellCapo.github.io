@@ -87,5 +87,6 @@ defaults:
 # Disable highlighting to use highlightJS instead
 # highlighter: none # Not supported by GitHub Pages
 kramdown:
+  math_engine: mathjax
   syntax_highlighter_opts:
     disable: true
