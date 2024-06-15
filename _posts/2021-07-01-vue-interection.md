@@ -3,7 +3,7 @@ layout: post
 title: Intersection observer api
 description: The Intersection Observer API provides a way to asynchronously observe changes in the intersection of a target element with an ancestor element or with a top-level document’s viewport..
 date: 2021-07-01 08:02:44 -0800
-tags: T-JS
+tags: JS
 ---
 
 # Intersection observer api

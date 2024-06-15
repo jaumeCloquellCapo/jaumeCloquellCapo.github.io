@@ -3,7 +3,7 @@ layout: post
 title: Introduction to Genetic Algorithms
 description: Genetic Algorithm (GA) is a search-based optimization technique based on the principles of Genetics and Natural Selection.
 date: 2021-03-08 08:02:44 -0800
-tags: T-AI
+tags: AI
 ---
 
 
