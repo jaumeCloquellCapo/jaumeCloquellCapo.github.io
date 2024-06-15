@@ -3,12 +3,12 @@ theme: minima
 title: Jaume Cloquell - Blog
 author: Jaume Cloquell Capo
 email: jaumecloquell@gmail.com
-# url: https://chadbaldwin.net
+url: https://jaumecloquellcapo.github.io
 
 timezone: Etc/UTC # GitHub uses UTC. This is to force dev environment to match
 future: false # GitHub Pages will publish future posts if this isn't set to false
 
-description: My first blog. Probably no one else will ever read it, but oh well.
+description: Personal Software Engineering Blog
 
 # Minima variables
 # twitter_username:  chad_baldwin
@@ -59,9 +59,8 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
 
-# google_analytics:
- # - UA-185058308-1 # Old GA Universal Analytics property
- # - G-RY6FRPMXHZ # New GA4 property
+google_analytics:
+  - G-EDYPFBT8SK # New GA4 property
 
 gravatar_hash: 2136e716a089f4a3794f4007328c7bfb
 code_block_max_height: 500px
