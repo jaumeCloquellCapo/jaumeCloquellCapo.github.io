@@ -13,6 +13,13 @@
   #startDate: 2022-07-10
   isCurrent: true # removing isCurrent status - intend to restart book from beginning
 
+- title: Software Architecture the Hard Parts
+  author: Neal Ford, Mark Richards, Pramod Sadalage, Zhamak Dehghani
+  summary:
+  link: https://www.amazon.com/Software-Architecture-Trade-Off-Distributed-Architectures/dp/1492086894
+  #startDate: 2022-07-10
+  # isCurrent: false # removing isCurrent status - intend to restart book from beginning
+
 - title: Designing Data-Intensive Applications
   author: Gene Kim
   summary:
