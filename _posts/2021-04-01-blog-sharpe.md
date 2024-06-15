@@ -94,11 +94,47 @@ The objective of the crossing is to generate, from individuals already existing 
 - Uniform crossing: the value that each position of the new individual is obtained from one of the two parents. Usually, the probability of the value coming from each parent is the same, although it could, for example, be conditioned by one's fitness.
 Unlike the previous strategies, with this one, each crossing is generates a single offspring.
 
-![img/ss.png](/img/ss.png)
+![uniform crossing](/img/ss.png)
 
 Below, you can see the implementation. The first step consist to extract a copy from one parent to create te new children.  Depens of the configuration, the new children receive one porperty from one parent or another.
 
-![img/sss.png](https://jaumecloquellcapo.github.io/img/sss.png)
+
+```python
+"""
+    This method generates a new individual from two parent individuals using the uniform crossover method.
+    """
+    def crossover(self, parentA, parentB, crossover_method="uniform"):
+        parental_1 = parentA
+        parental_2 = parentB
+        offspring = copy.deepcopy(parentA)
+        offspring.genes = np.repeat(None, self.size)
+        
+        if crossover_method == "uniform":
+            # Randomly select the positions inherited from parent1 and parent2.
+            inheritance_parent_1 = np.random.choice(
+                                    a=[True, False],
+                                    size=self.size,
+                                    p=[0.5, 0.5],
+                                    replace=True
+                                )
+            inheritance_parent_2 = np.logical_not(inheritance_parent_1)
+
+            # Transfer values to the new individual.
+            offspring.genes[inheritance_parent_1] = parental_1.genes[inheritance_parent_1]
+            offspring.genes[inheritance_parent_2] = parental_2.genes[inheritance_parent_2]
+            
+        if crossover_method == "single_point":
+            crossover_point = np.random.choice(a=np.arange(1, self.size - 1), size=1)
+            crossover_point = crossover_point[0]
+            offspring.genes = np.hstack((parental_1.genes[:crossover_point], parental_2.genes[crossover_point:]))
+        
+        # The sum of the individual's weights must be 1                                
+        if sum(offspring.genes) != 1:
+            offspring.genes = offspring.genes / np.sum(offspring.genes)
+            
+        return offspring
+
+```
 
 **Mutation method**
 
@@ -268,17 +304,17 @@ absolute among better individuals is not higher than the value of  'stop_tolera
 
 As output of the genetic algorithm can be visualized for each generation, which has been the best combination along with the list of the best weights. We select an investment portfolio formed by Cellnex Telecom, S.A.(MTS.MC) , ArcelorMittal (MTS.MC), Ferrovial, S.A. (FER.MC) and Banco Santander, S.A. (SAN.MC).
 
-![result](../img/ssse.png)
+![result](/img/ssse.png)
 
 **Daily prices of the companies for 1 year**
 
 If we select an investment portfolio formed by Cellnex Telecom, S.A.(MTS.MC) , ArcelorMittal (MTS.MC), Ferrovial, S.A. (FER.MC) and Banco Santander, S.A. (SAN.MC). The results are as follows: 0% Telecom and 0,1% ArcelorMittal, 0% Ferrovial and 99% Banco Santander . If we look at the allocations, it makes perfect sense since the strongest company is Santander and it has a much higher return than the rest and therefore should be given more weight to investment. On the other hand, the companies with a negative average are assigned less than 1% of the total weightof the portfolio.
 
-![output](../img/ou.png)
+![output](/img/ou.png)
 
 **Output generate for the softwareRatio value for every portofolio**
 
-![result](../img/res.png)
+![result](/img/res.png)
 
 ## Bibliography
 
