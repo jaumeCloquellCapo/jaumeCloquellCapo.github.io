@@ -6,7 +6,7 @@ date: 2021-04-01 08:02:44 -0800
 tags: AI
 use_math: true
 ---
-
+$\sqrt{3x-1}+(1+x)^2$
 
 # Portfolio Optimization Based on Sharpe Ratio and Genetic Algorithm
 
