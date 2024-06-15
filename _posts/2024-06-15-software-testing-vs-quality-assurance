@@ -1,5 +1,14 @@
 
 # Testing vs. Quality
 
-To deliver software products that meet high standards of quality and reliability, software testing and quality assurance are being used as integral components of the software development process. Often, people interchange their names for the same meaning, but they both have some differences too. 
+To deliver software products that meet high standards of quality and reliability, software testing and quality assurance are being used as integral components of the software development process. A lot of people think that the cause of low-quality software is insufficient testing. The truth is very different:
 
+While testing and quality are interconnected, the link is more tenuous than commonly thought. Testing reveals the lack of quality by highlighting bugs in your software. However, it only confirms the presence of bugs and not the absence of them. The fact that no bugs are found doesn’t guarantee that none exist in the code. Thus, testing serves as a quality check but is not entirely reliable. Testing influences quality if bugs are found and fixed. Consequently, your code will likely be better than before. This association between testing and quality leads to oversimplification.
+
+___
+ Just as checking your fuel gauge doesn't fill your gas tank, testing alone doesn't enhance software quality. Improvement requires proactive measures to elevate software quality.
+___
+
+So, what genuinely enhances software quality? Fixing bugs, eliminating code smells, removing warnings, improving performance, and making the software more user-friendly. These activities might stem from testing, but action must be taken on the test results for any improvement to occur.
+
+Although this seems obvious, testing is often performed so late in the software development lifecycle that there's insufficient time to address the findings. Consequently, issues remain unresolved or are deferred to future releases. This superficial approach to testing merely masks inadequate quality control.
