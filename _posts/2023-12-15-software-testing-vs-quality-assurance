@@ -1,5 +1,5 @@
 
-# Testing vs. Quality
+# Software Testing vs. Quality
 
 To deliver software products that meet high standards of quality and reliability, software testing and quality assurance are being used as integral components of the software development process. A lot of people think that the cause of low-quality software is insufficient testing. The truth is very different:
 
@@ -12,3 +12,5 @@ ___
 So, what genuinely enhances software quality? Fixing bugs, eliminating code smells, removing warnings, improving performance, and making the software more user-friendly. These activities might stem from testing, but action must be taken on the test results for any improvement to occur.
 
 Although this seems obvious, testing is often performed so late in the software development lifecycle that there's insufficient time to address the findings. Consequently, issues remain unresolved or are deferred to future releases. This superficial approach to testing merely masks inadequate quality control.
+
+If you're unhappy with your code quality, more testing isn't the solution. Instead, identify the root causes of poor quality, such as time pressure, careless development, and lack of quality focus. Fix these first, then gradually improve your code with automated tests, static code checks, and a robust continuous integration pipeline. Improvement takes time and must be done iteratively. Remember, it's a marathon, not a sprint.
