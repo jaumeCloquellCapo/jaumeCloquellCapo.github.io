@@ -52,7 +52,7 @@ Following portfolio theory, methods and indicators for the evaluation of risk-ad
 
 The Sharpe ratio was proposed by William Sharpe, a winner of the Nobel Memorial Prize in Economic Sciences in 1990. The Sharpe ratio is based on the capital asset pricing model, which is one of the basic and significant investment theories. The Sharpe ratio is utilized to measure the performance of a stock; it is a representative index to assess stocks. Choosing and holding the portfolio which has low risk and high return is the purpose of the Sharpe ratio. The formula of the Sharpe ratio is given by the formula where Rf is the risk-free rate of interest. By selecting the higher Sharpe ratio, investors invest in the portfolio which has minimal investment risk with the same amount of return or maximal return with the same investment risk:
 
-where r is the return on the portfolio, $r_{rf}$ is the risk-free return and $\sigma$ is the [standard deviation](https://mathworld.wolfram.com/StandardDeviation.html) of the fund's returns.
+where r is the return on the portfolio, $$r_{rf}$$ is the risk-free return and $$\sigma$$ is the [standard deviation](https://mathworld.wolfram.com/StandardDeviation.html) of the fund's returns.
 
 Given the nature of this new objective function, it is clear that both any increase in performance and any decrease in risk will increase the value of the function.
 
