@@ -94,7 +94,7 @@ The objective of the crossing is to generate, from individuals already existing 
 - Uniform crossing: the value that each position of the new individual is obtained from one of the two parents. Usually, the probability of the value coming from each parent is the same, although it could, for example, be conditioned by one's fitness.
 Unlike the previous strategies, with this one, each crossing is generates a single offspring.
 
-![img/ss.png](img/ss.png)
+![img/ss.png](/img/ss.png)
 
 Below, you can see the implementation. The first step consist to extract a copy from one parent to create te new children.  Depens of the configuration, the new children receive one porperty from one parent or another.
 
