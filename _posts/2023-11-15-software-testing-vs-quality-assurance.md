@@ -1,3 +1,10 @@
+---
+layout: post
+title: Software Testing vs. Quality
+description: The Distinction Between Testing And Quality Assurance In The Software Industry
+date: 2023-11-15 08:02:44 -0800
+tags: T-Software
+---
 
 # Software Testing vs. Quality
 
