@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Common mistakes tech leads make it
+title: The failure of leadership
 description: Experiences lived from developer perspective and mistakes make as tech lead
-date: 2024-06-15 08:02:44 -0800
-tags: Management Software
+date: 2024-05-01 08:02:44 -0800
+tags: Management
 ---
 
 ## Delegate, don’t be a bottleneck
@@ -16,7 +16,7 @@ Micromanaging every detail might appear efficient, but it often leads to bottlen
 
 It's crucial for leads to adjust their management style based on the team's level of competence and experience, avoiding excessive control and nurturing a collaborative environment where everyone's input is valued.
 
-## Abuse time Meetings
+## Abuse time meetings
 
 A common pitfall for busy leads is scheduling meetings at their convenience without considering their team's productivity hours. Demanding detailed explanations from developers can severely impact their workflow.
 
